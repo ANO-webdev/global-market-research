@@ -1,0 +1,1938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Global SME Market Research — Emmanuel Ano Web Dev</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0D1B2A;
+    --dark-blue: #1A2E44;
+    --mid-blue: #1E4D8C;
+    --accent: #2196F3;
+    --light-blue: #E8F4FD;
+    --gold: #F59E0B;
+    --green: #10B981;
+    --red: #EF4444;
+    --orange: #F97316;
+    --light-gray: #F8FAFC;
+    --mid-gray: #E2E8F0;
+    --text-dark: #0F172A;
+    --text-mid: #334155;
+    --text-light: #64748B;
+    --white: #ffffff;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--navy);
+    color: var(--text-dark);
+    line-height: 1.6;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--navy);
+    padding: 60px 24px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(33,150,243,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-tag {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: rgba(33,150,243,0.1);
+    border: 1px solid rgba(33,150,243,0.25);
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 8vw, 88px);
+    color: var(--white);
+    line-height: 1;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+  .hero h1 em {
+    color: var(--accent);
+    font-style: normal;
+  }
+  .hero-sub {
+    font-size: 15px;
+    color: #93C5FD;
+    margin-bottom: 32px;
+    max-width: 580px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* cover stats */
+  .cover-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    max-width: 720px;
+    margin: 0 auto 32px;
+    background: rgba(255,255,255,0.07);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  @media(min-width:640px){ .cover-stats { grid-template-columns: repeat(4,1fr); } }
+  .cover-stat {
+    padding: 18px 16px;
+    background: rgba(13,27,42,0.6);
+    text-align: center;
+  }
+  .cover-stat .val {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px;
+    color: var(--gold);
+    letter-spacing: 1px;
+  }
+  .cover-stat .lbl { font-size: 11px; color: #CBD5E1; margin-top: 2px; line-height: 1.3; }
+
+  .sources-bar {
+    max-width: 720px;
+    margin: 0 auto;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-size: 12px;
+    color: #94A3B8;
+    text-align: center;
+  }
+
+  /* ── MAIN CONTENT ── */
+  main {
+    background: var(--white);
+  }
+
+  /* ── TOC ── */
+  .toc {
+    background: var(--white);
+    padding: 32px 24px;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+  .toc-title {
+    background: var(--navy);
+    color: var(--white);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 2px;
+    padding: 12px 18px;
+    border-radius: 6px;
+    margin-bottom: 16px;
+  }
+  .toc-row {
+    display: flex;
+    gap: 8px;
+    align-items: baseline;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--mid-gray);
+  }
+  .toc-row:last-child { border-bottom: none; }
+  .toc-section { font-weight: 600; font-size: 14px; color: var(--text-dark); }
+  .toc-countries { font-size: 12.5px; color: var(--text-light); margin-left: 6px; }
+
+  /* ── CONTINENT BANNER ── */
+  .continent-banner {
+    background: var(--navy);
+    color: var(--white);
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    border-bottom: 3px solid var(--accent);
+  }
+  .continent-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px;
+    letter-spacing: 2px;
+  }
+  .continent-count {
+    font-size: 12px;
+    color: #93C5FD;
+    font-family: 'DM Mono', monospace;
+    text-align: right;
+  }
+
+  /* ── COUNTRY WRAPPER ── */
+  .country-wrap {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 16px 32px;
+  }
+
+  /* ── COUNTRY HEADER ── */
+  .country-header {
+    background: var(--dark-blue);
+    border-bottom: 3px solid var(--accent);
+    padding: 16px 20px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 16px;
+    align-items: start;
+    margin-bottom: 0;
+  }
+  .country-flag-name {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .country-flag { font-size: 28px; line-height: 1; }
+  .country-title { font-size: 20px; font-weight: 700; color: var(--white); line-height: 1.2; }
+  .country-sub { font-size: 11px; color: #93C5FD; margin-top: 2px; }
+  .country-price-block { text-align: right; }
+  .price-big { font-family: 'Bebas Neue', sans-serif; font-size: 22px; color: var(--gold); letter-spacing: 1px; }
+  .price-usd { font-size: 11px; color: #FCD34D; }
+  .confidence-row { display: flex; gap: 12px; align-items: flex-start; margin-top: 8px; }
+  .conf-block { text-align: right; }
+  .stat-label { font-size: 9px; color: var(--text-light); text-transform: uppercase; letter-spacing: 1px; }
+  .conf-val { font-size: 13px; font-weight: 700; }
+  .conf-HIGH, .conf-VERY-HIGH { color: var(--green); }
+  .conf-MED-HIGH { color: var(--accent); }
+  .conf-MEDIUM { color: var(--gold); }
+  .payments-val { font-size: 11px; color: #94A3B8; line-height: 1.4; }
+
+  /* ── STATS ROW ── */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background: var(--light-blue);
+    border-bottom: 1px solid var(--mid-gray);
+  }
+  .stat-cell {
+    padding: 12px 16px;
+    border-right: 1px solid var(--mid-gray);
+  }
+  .stat-cell:last-child { border-right: none; }
+  .stat-val { font-size: 15px; font-weight: 700; color: var(--text-dark); }
+  .stat-lbl { font-size: 9px; color: var(--text-light); margin-top: 1px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .stat-src { font-size: 9px; color: var(--text-light); }
+
+  /* expand toggle */
+  .country-toggle {
+    background: var(--light-blue);
+    border: none;
+    width: 100%;
+    padding: 9px 20px;
+    text-align: left;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    color: var(--mid-blue);
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--mid-gray);
+    transition: background 0.2s;
+  }
+  .country-toggle:hover { background: #DBEAFE; }
+  .toggle-icon { transition: transform 0.3s; font-size: 14px; }
+  .country-toggle.open .toggle-icon { transform: rotate(180deg); }
+
+  .country-body {
+    display: none;
+    border-bottom: 2px solid var(--mid-gray);
+  }
+  .country-body.open { display: block; }
+
+  /* ── SECTION LABEL ── */
+  .section-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--accent);
+    text-transform: uppercase;
+    padding: 10px 20px 4px;
+  }
+
+  /* ── CITY BLOCK ── */
+  .city-header {
+    background: var(--mid-blue);
+    padding: 8px 16px;
+  }
+  .city-badge {
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+  .city-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.3;
+  }
+  .city-desc {
+    background: var(--light-gray);
+    padding: 8px 16px;
+    font-size: 11.5px;
+    color: var(--text-mid);
+    line-height: 1.5;
+  }
+  .industry-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .industry-table thead tr {
+    background: var(--navy);
+  }
+  .industry-table th {
+    padding: 6px 12px;
+    font-size: 9px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: left;
+  }
+  .industry-table td {
+    padding: 7px 12px;
+    font-size: 12px;
+    border-bottom: 1px solid var(--mid-gray);
+  }
+  .industry-table tr:nth-child(even) td { background: var(--light-gray); }
+  .industry-table tr:nth-child(odd) td { background: var(--white); }
+  .price-td { color: var(--mid-blue); font-weight: 600; }
+  .city-spacer { height: 6px; background: var(--white); }
+
+  /* ── AVOID NOTE ── */
+  .avoid-note {
+    background: #FEF2F2;
+    border-right: 3px solid var(--red);
+    padding: 10px 14px;
+    margin: 8px 16px;
+    font-size: 11.5px;
+    color: #7F1D1D;
+    font-style: italic;
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* ── INSIGHT BOX ── */
+  .insight-box {
+    background: #EFF6FF;
+    border-left: 3px solid var(--accent);
+    padding: 12px 16px;
+    margin: 8px 16px 16px;
+    border-radius: 0 6px 6px 0;
+  }
+  .insight-title {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--mid-blue);
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .insight-text {
+    font-size: 12px;
+    color: var(--text-mid);
+    line-height: 1.6;
+  }
+
+  /* ── METADATA PAGE ── */
+  .meta-section {
+    background: var(--white);
+    padding: 0 0 40px;
+  }
+  .meta-wrap { max-width: 860px; margin: 0 auto; padding: 0 16px; }
+  .meta-row {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--mid-gray);
+    font-size: 12.5px;
+  }
+  .meta-lbl { font-weight: 700; color: var(--text-light); }
+  .meta-val { color: var(--text-dark); line-height: 1.5; }
+
+  .global-summary-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+    font-size: 12.5px;
+  }
+  .global-summary-table th {
+    background: var(--navy);
+    color: var(--white);
+    padding: 8px 12px;
+    font-weight: 700;
+    text-align: left;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .global-summary-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--mid-gray);
+    color: var(--text-dark);
+  }
+  .global-summary-table tr:nth-child(even) td { background: var(--light-gray); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy);
+    text-align: center;
+    padding: 18px 24px;
+    font-size: 11px;
+    color: var(--text-light);
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  /* ── WARNING BOX ── */
+  .warning-box {
+    background: #FFFBEB;
+    border-left: 3px solid var(--gold);
+    padding: 12px 16px;
+    margin: 8px 16px;
+    border-radius: 0 6px 6px 0;
+    font-size: 12px;
+    color: #78350F;
+    font-weight: 500;
+  }
+
+  /* scroll offset for sticky header */
+  .continent-anchor { scroll-margin-top: 56px; }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-tag">DATA-BACKED RESEARCH</div>
+  <h1>Global SME<br><em>Market Research</em></h1>
+  <p class="hero-sub">Industry pricing per sub-region · SME digitization rates · GDP per capita purchasing power · All data sourced &amp; cited</p>
+
+  <div class="cover-stats">
+    <div class="cover-stat"><div class="val">100M+</div><div class="lbl">Offline SMEs globally</div></div>
+    <div class="cover-stat"><div class="val">$800–$2K</div><div class="lbl">Avg project value (USD)</div></div>
+    <div class="cover-stat"><div class="val">30</div><div class="lbl">Countries researched</div></div>
+    <div class="cover-stat"><div class="val">2022–24</div><div class="lbl">Data period</div></div>
+  </div>
+
+  <div class="sources-bar">
+    📊 Eurostat &nbsp;·&nbsp; 🌐 World Bank &nbsp;·&nbsp; 📈 Statista &nbsp;·&nbsp; 🏛 OECD &nbsp;·&nbsp; 💻 Wix/Fiverr Benchmarks &nbsp;·&nbsp; National Statistics Offices
+  </div>
+</header>
+
+<main>
+
+<!-- TOC -->
+<section class="toc">
+  <div class="toc-title">CONTENTS</div>
+  <div class="toc-row"><span class="toc-section">🌍 AFRICA — Top 5 Countries</span><span class="toc-countries">Nigeria · Tanzania · South Africa · Kenya · Ghana</span></div>
+  <div class="toc-row"><span class="toc-section">🕌 MIDDLE EAST — Top 5 Countries</span><span class="toc-countries">Qatar · Kuwait · Bahrain · UAE · Saudi Arabia</span></div>
+  <div class="toc-row"><span class="toc-section">🌏 ASIA — Top 5 Countries</span><span class="toc-countries">India · Philippines · Indonesia · Vietnam · Pakistan</span></div>
+  <div class="toc-row"><span class="toc-section">🌎 LATIN AMERICA — Top 5 Countries</span><span class="toc-countries">Brazil · Mexico · Colombia · Argentina · Chile</span></div>
+  <div class="toc-row"><span class="toc-section">🌏 OCEANIA</span><span class="toc-countries">Australia · New Zealand</span></div>
+  <div class="toc-row"><span class="toc-section">🌎 NORTH AMERICA</span><span class="toc-countries">Canada · USA Regional</span></div>
+  <div class="toc-row"><span class="toc-section">📊 Research Metadata &amp; Sources</span></div>
+</section>
+
+<!-- ═══════════════════ AFRICA ═══════════════════ -->
+<div id="africa" class="continent-anchor">
+  <div class="continent-banner">
+    <span class="continent-name">🌍 AFRICA</span>
+    <span class="continent-count">Top 5 Countries · Highest SME Non-Digitization</span>
+  </div>
+</div>
+
+<!-- NIGERIA -->
+<div class="country-wrap">
+  <div class="country-header">
+    <div class="country-flag-name">
+      <div class="country-flag">🇳🇬</div>
+      <div><div class="country-title">Nigeria</div><div class="country-sub">English · West Africa</div></div>
+    </div>
+    <div class="country-price-block">
+      <div class="price-big">₦50,000 – ₦120,000</div>
+      <div class="price-usd">≈ $45–$108</div>
+      <div class="confidence-row">
+        <div class="conf-block"><div class="stat-label">Data Confidence</div><div class="conf-val conf-HIGH">HIGH</div></div>
+        <div class="conf-block" style="text-align:left"><div class="stat-label">Payments</div><div class="payments-val">Flutterwave Paystack Opay Wise</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="stats-row">
+    <div class="stat-cell"><div class="stat-val">$5,500</div><div class="stat-lbl">GDP per capita PPP</div><div class="stat-src">World Bank 2023</div></div>
+    <div class="stat-cell"><div class="stat-val">~41M</div><div class="stat-lbl">Active SMEs</div><div class="stat-src">SMEDAN / NBS 2023</div></div>
+    <div class="stat-cell"><div class="stat-val">89%</div><div class="stat-lbl">SMEs with no website</div><div class="stat-src">NCC / SMEDAN 2022</div></div>
+  </div>
+  <button class="country-toggle" onclick="toggleCountry(this)">▼ view data breakdown <span class="toggle-icon">▼</span></button>
+  <div class="country-body">
+    <div class="section-label">SUB-REGIONS &amp; INDUSTRY PRICING</div>
+    <!-- Lagos -->
+    <div class="city-header"><div class="city-badge">COMMERCIAL CAPITAL</div><div class="city-name">Lagos — Ikeja / Surulere / Yaba</div></div>
+    <div class="city-desc">~15M metro residents · Ikeja and Surulere are Nigeria's busiest commercial corridors outside Lagos Island · Yaba is the tech belt — entrepreneurs are digitally aware but still offline · Avoid Lagos Island/Victoria Island (digitized, agency-competitive)</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Restaurants &amp; Buka Spots</td><td class="price-td">₦55,000 – ₦90,000</td></tr>
+      <tr><td>Beauty Salons &amp; Nail Bars</td><td class="price-td">₦50,000 – ₦80,000</td></tr>
+      <tr><td>Fashion &amp; Clothing Stores</td><td class="price-td">₦55,000 – ₦95,000</td></tr>
+      <tr><td>Clinics &amp; Pharmacies</td><td class="price-td">₦70,000 – ₦120,000</td></tr>
+      <tr><td>Event Planning &amp; Vendors</td><td class="price-td">₦65,000 – ₦110,000</td></tr>
+    </tbody></table>
+    <div class="city-spacer"></div>
+    <!-- Abuja -->
+    <div class="city-header"><div class="city-badge">CAPITAL CITY — NEW MONEY, ZERO WEBSITES</div><div class="city-name">Abuja — Wuse / Kubwa / Karu</div></div>
+    <div class="city-desc">~4M metro residents · Abuja businesses are cash-rich from government proximity but almost entirely offline · Wuse Market and Kubwa are the densest SME zones · Professionals here respond better to WhatsApp cold outreach than any other Nigerian city</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Clinics &amp; Medical Centers</td><td class="price-td">₦70,000 – ₦120,000</td></tr>
+      <tr><td>Restaurants &amp; Bars</td><td class="price-td">₦55,000 – ₦95,000</td></tr>
+      <tr><td>Event Centers &amp; Decorators</td><td class="price-td">₦70,000 – ₦110,000</td></tr>
+      <tr><td>Real Estate Agents</td><td class="price-td">₦80,000 – ₦120,000</td></tr>
+      <tr><td>Salons &amp; Barbers</td><td class="price-td">₦50,000 – ₦80,000</td></tr>
+    </tbody></table>
+    <div class="city-spacer"></div>
+    <!-- Port Harcourt -->
+    <div class="city-header"><div class="city-badge">OIL CITY — HIGH INCOME, ALMOST OFFLINE</div><div class="city-name">Port Harcourt</div></div>
+    <div class="city-desc">~3M residents · Rivers State oil economy drives above-average SME income · Restaurants, logistics, and engineering services are booming — almost none have websites · Less cold outreach competition than Lagos</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Oil &amp; Gas Support Services</td><td class="price-td">₦80,000 – ₦120,000</td></tr>
+      <tr><td>Restaurants &amp; Lounges</td><td class="price-td">₦60,000 – ₦100,000</td></tr>
+      <tr><td>Beauty &amp; Wellness</td><td class="price-td">₦55,000 – ₦85,000</td></tr>
+      <tr><td>Clinics &amp; Dental</td><td class="price-td">₦70,000 – ₦110,000</td></tr>
+    </tbody></table>
+    <div class="avoid-note">✕ Avoid Lagos Island / Victoria Island / Lekki Phase 1 — agencies charge ₦200,000–₦500,000, clients are price-aware and slow to decide</div>
+    <div class="insight-box"><div class="insight-title">📊 Market Insight</div><div class="insight-text">Nigeria has 41M SMEs — the largest in Africa — with 89% lacking a website (NCC 2022). That is approximately 36.5M businesses with no online presence. English is the sole business language. Paystack and Flutterwave make NGN collection instant. Key context: naira depreciation (~₦1,100/$1) means you earn ~$82 on a ₦90,000 project — volume and maintenance retainers are the real play. Nigerian clients respond best to WhatsApp outreach. Lead with "your competitors already have websites" — social proof closes faster than price arguments here.</div></div>
+  </div>
+</div>
+
+<!-- TANZANIA -->
+<div class="country-wrap">
+  <div class="country-header">
+    <div class="country-flag-name">
+      <div class="country-flag">🇹🇿</div>
+      <div><div class="country-title">Tanzania</div><div class="country-sub">English + Swahili · East Africa</div></div>
+    </div>
+    <div class="country-price-block">
+      <div class="price-big">TZS 200,000 – 380,000</div>
+      <div class="price-usd">≈ $75–$145</div>
+      <div class="confidence-row">
+        <div class="conf-block"><div class="stat-label">Data Confidence</div><div class="conf-val conf-MED-HIGH">MED-HIGH</div></div>
+        <div class="conf-block" style="text-align:left"><div class="stat-label">Payments</div><div class="payments-val">M-Pesa TZ Airtel Money Wise</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="stats-row">
+    <div class="stat-cell"><div class="stat-val">$3,200</div><div class="stat-lbl">GDP per capita PPP</div><div class="stat-src">World Bank 2023</div></div>
+    <div class="stat-cell"><div class="stat-val">~3.2M</div><div class="stat-lbl">Active SMEs</div><div class="stat-src">SIDO Tanzania 2023</div></div>
+    <div class="stat-cell"><div class="stat-val">88%</div><div class="stat-lbl">SMEs with no website</div><div class="stat-src">Tanzania Digital Economy Survey 2023</div></div>
+  </div>
+  <button class="country-toggle" onclick="toggleCountry(this)">▼ view data breakdown <span class="toggle-icon">▼</span></button>
+  <div class="country-body">
+    <div class="section-label">SUB-REGIONS &amp; INDUSTRY PRICING</div>
+    <div class="city-header"><div class="city-badge">TOURISM CAPITAL — HIGH MOTIVATION TO GET ONLINE</div><div class="city-name">Arusha</div></div>
+    <div class="city-desc">~500,000 residents · Gateway to Kilimanjaro and Serengeti · Tourism is 17% of Tanzania's GDP · Hotels, safari operators, and restaurants are desperate to be found by international travellers — but 90%+ have no website</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Safari &amp; Tour Operators</td><td class="price-td">TZS 280,000 – 400,000</td></tr>
+      <tr><td>Hotels &amp; Guesthouses</td><td class="price-td">TZS 260,000 – 380,000</td></tr>
+      <tr><td>Restaurants &amp; Cafes</td><td class="price-td">TZS 200,000 – 300,000</td></tr>
+      <tr><td>Equipment Rental &amp; Guides</td><td class="price-td">TZS 220,000 – 320,000</td></tr>
+    </tbody></table>
+    <div class="city-spacer"></div>
+    <div class="city-header"><div class="city-badge">ISLAND TOURISM — MASSIVE UNTAPPED OPPORTUNITY</div><div class="city-name">Zanzibar Town</div></div>
+    <div class="city-desc">~250,000 island residents · 600,000 tourists in 2023 · 95% of small hotels, spice tours, and restaurants have zero web presence · International tourists book online = very high motivation once you explain the value</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Beach Hotels &amp; Resorts</td><td class="price-td">TZS 280,000 – 400,000</td></tr>
+      <tr><td>Spice Tours &amp; Activities</td><td class="price-td">TZS 240,000 – 360,000</td></tr>
+      <tr><td>Seafood Restaurants</td><td class="price-td">TZS 200,000 – 300,000</td></tr>
+      <tr><td>Craft &amp; Souvenir Shops</td><td class="price-td">TZS 180,000 – 270,000</td></tr>
+    </tbody></table>
+    <div class="city-spacer"></div>
+    <div class="city-header"><div class="city-badge">LAKE VICTORIA — INLAND COMMERCIAL HUB</div><div class="city-name">Mwanza</div></div>
+    <div class="city-desc">~1.2M residents · Tanzania's 2nd largest city · Lake Victoria fishing and trade economy · Strong retail and food processing sector · Almost no digital agency competition in the city</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Fisheries &amp; Food Export</td><td class="price-td">TZS 200,000 – 300,000</td></tr>
+      <tr><td>Restaurants &amp; Hotels</td><td class="price-td">TZS 180,000 – 270,000</td></tr>
+      <tr><td>Local Retail</td><td class="price-td">TZS 170,000 – 250,000</td></tr>
+    </tbody></table>
+    <div class="avoid-note">✕ Avoid Dar es Salaam CBD — Tanzania's most digitized area, agencies charge TZS 600,000+ and clients are harder to convert</div>
+    <div class="insight-box"><div class="insight-title">📊 Market Insight</div><div class="insight-text">Tanzania's tourism sector is its primary dollar-earner, and Arusha/Zanzibar operators actively lose bookings to competitors with websites. English is co-official with Swahili, so outreach in English lands well. TZS 280,000 (~$107) is a premium local price — position against the very real cost of missing international bookings. Zanzibar is your highest-ROI city in Tanzania: a single tour operator converting from WhatsApp to a booking website can justify your fee in one week of bookings.</div></div>
+  </div>
+</div>
+
+<!-- SOUTH AFRICA -->
+<div class="country-wrap">
+  <div class="country-header">
+    <div class="country-flag-name">
+      <div class="country-flag">🇿🇦</div>
+      <div><div class="country-title">South Africa</div><div class="country-sub">English · ZAR</div></div>
+    </div>
+    <div class="country-price-block">
+      <div class="price-big">ZAR 4,000 – 7,000</div>
+      <div class="price-usd">≈ $215–$375</div>
+      <div class="confidence-row">
+        <div class="conf-block"><div class="stat-label">Data Confidence</div><div class="conf-val conf-MED-HIGH">MED-HIGH</div></div>
+        <div class="conf-block" style="text-align:left"><div class="stat-label">Payments</div><div class="payments-val">Flutterwave Wise Payoneer</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="stats-row">
+    <div class="stat-cell"><div class="stat-val">$6,200</div><div class="stat-lbl">GDP per capita</div><div class="stat-src">World Bank 2023</div></div>
+    <div class="stat-cell"><div class="stat-val">~2.5M</div><div class="stat-lbl">Active SMEs</div><div class="stat-src">SEDA South Africa 2023</div></div>
+    <div class="stat-cell"><div class="stat-val">78%</div><div class="stat-lbl">SMEs with no website</div><div class="stat-src">SEDA Digital Survey 2022</div></div>
+  </div>
+  <button class="country-toggle" onclick="toggleCountry(this)">▼ view data breakdown <span class="toggle-icon">▼</span></button>
+  <div class="country-body">
+    <div class="section-label">SUB-REGIONS &amp; INDUSTRY PRICING</div>
+    <div class="city-header"><div class="city-badge">PORT CITY · DENSE SME MARKET</div><div class="city-name">Durban (eThekwini)</div></div>
+    <div class="city-desc">~3.9M residents · SA's 3rd largest metro · Very active informal + formal SME sector · Large Indian-origin business community very receptive to web services · Less digitized than Joburg or Cape Town</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Restaurants &amp; Takeaways</td><td class="price-td">ZAR 4,500 – 6,500</td></tr>
+      <tr><td>Beauty Salons &amp; Spas</td><td class="price-td">ZAR 4,000 – 6,000</td></tr>
+      <tr><td>Retail &amp; Clothing Stores</td><td class="price-td">ZAR 4,500 – 6,500</td></tr>
+      <tr><td>Tourism &amp; Guesthouses</td><td class="price-td">ZAR 5,000 – 7,500</td></tr>
+      <tr><td>Auto Services</td><td class="price-td">ZAR 4,000 – 5,800</td></tr>
+    </tbody></table>
+    <div class="city-spacer"></div>
+    <div class="city-header"><div class="city-badge">LEAST DIGITIZED PROVINCE</div><div class="city-name">Eastern Cape (Gqeberha / East London)</div></div>
+    <div class="city-desc">~6.5M residents across province · Lowest digital adoption in SA · Almost no web agencies based here · Strong retail and food sector · Easiest cold outreach conversion in the country</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Local Retail</td><td class="price-td">ZAR 3,500 – 5,500</td></tr>
+      <tr><td>Food &amp; Restaurants</td><td class="price-td">ZAR 3,500 – 5,500</td></tr>
+      <tr><td>Construction &amp; Trade</td><td class="price-td">ZAR 4,000 – 6,000</td></tr>
+      <tr><td>Auto Services</td><td class="price-td">ZAR 3,500 – 5,000</td></tr>
+    </tbody></table>
+    <div class="city-spacer"></div>
+    <div class="city-header"><div class="city-badge">GOVERNMENT CITY · LOW-COMPETITION SUBURBS</div><div class="city-name">Pretoria Suburbs (Tshwane)</div></div>
+    <div class="city-desc">~3.6M residents · Outer suburbs like Centurion, Hatfield, Soshanguve have high SME density with very low digital penetration · Government adjacent services booming · Far fewer agencies than Joburg</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Restaurants &amp; Cafés</td><td class="price-td">ZAR 4,500 – 6,500</td></tr>
+      <tr><td>Professional Services</td><td class="price-td">ZAR 5,000 – 7,500</td></tr>
+      <tr><td>Beauty &amp; Wellness</td><td class="price-td">ZAR 4,000 – 6,000</td></tr>
+      <tr><td>Gyms &amp; Fitness</td><td class="price-td">ZAR 4,500 – 6,500</td></tr>
+    </tbody></table>
+    <div class="avoid-note">✕ Avoid Cape Town CBD / Sandton (Joburg) — SA's most digitized areas, strong local agency market</div>
+    <div class="insight-box"><div class="insight-title">📊 Market Insight</div><div class="insight-text">South Africa has ~2.5M SMEs (SEDA 2023) with 78% lacking a professional website — roughly 1.95M businesses. The country is English-speaking which eliminates language barrier entirely. Flutterwave makes receiving ZAR straightforward. Key friction: ZAR is weak vs USD/EUR (~18.7 ZAR = $1), so price in ZAR to match local expectations. At ZAR 5,000 you earn ~$267 — volume play, not premium.</div></div>
+  </div>
+</div>
+
+<!-- KENYA -->
+<div class="country-wrap">
+  <div class="country-header">
+    <div class="country-flag-name">
+      <div class="country-flag">🇰🇪</div>
+      <div><div class="country-title">Kenya</div><div class="country-sub">English / Swahili</div></div>
+    </div>
+    <div class="country-price-block">
+      <div class="price-big">KES 20,000 – 35,000</div>
+      <div class="price-usd">≈ $155–$270</div>
+      <div class="confidence-row">
+        <div class="conf-block"><div class="stat-label">Data Confidence</div><div class="conf-val conf-MED-HIGH">MED-HIGH</div></div>
+        <div class="conf-block" style="text-align:left"><div class="stat-label">Payments</div><div class="payments-val">M-Pesa Chipper Cash Wise</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="stats-row">
+    <div class="stat-cell"><div class="stat-val">$2,200</div><div class="stat-lbl">GDP per capita</div><div class="stat-src">World Bank 2023</div></div>
+    <div class="stat-cell"><div class="stat-val">~7.4M</div><div class="stat-lbl">Active SMEs</div><div class="stat-src">Kenya KNBS 2023</div></div>
+    <div class="stat-cell"><div class="stat-val">85%</div><div class="stat-lbl">SMEs with no website</div><div class="stat-src">Kenya ICT Survey 2022</div></div>
+  </div>
+  <button class="country-toggle" onclick="toggleCountry(this)">▼ view data breakdown <span class="toggle-icon">▼</span></button>
+  <div class="country-body">
+    <div class="section-label">SUB-REGIONS &amp; INDUSTRY PRICING</div>
+    <div class="city-header"><div class="city-badge">COASTAL TOURISM HUB</div><div class="city-name">Mombasa</div></div>
+    <div class="city-desc">~1.2M residents · Kenya's 2nd city · Massive tourism sector + active local business community · Port economy drives B2B demand · Tourism businesses highly motivated to get found online · M-Pesa makes collection instant</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Tourism &amp; Beach Hotels</td><td class="price-td">KES 25,000 – 38,000</td></tr>
+      <tr><td>Restaurants &amp; Food</td><td class="price-td">KES 20,000 – 32,000</td></tr>
+      <tr><td>Logistics &amp; Port Services</td><td class="price-td">KES 25,000 – 38,000</td></tr>
+      <tr><td>Retail &amp; Trading</td><td class="price-td">KES 20,000 – 30,000</td></tr>
+    </tbody></table>
+    <div class="city-spacer"></div>
+    <div class="city-header"><div class="city-badge">3RD LARGEST CITY · VERY LOW DIGITAL</div><div class="city-name">Nakuru</div></div>
+    <div class="city-desc">~570,000 residents · Kenya's 3rd largest city · Strong agriculture + growing commercial sector · Very low digital adoption — most businesses run entirely on WhatsApp · Almost no local web agencies</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Agriculture &amp; Produce</td><td class="price-td">KES 18,000 – 28,000</td></tr>
+      <tr><td>Restaurants &amp; Hotels</td><td class="price-td">KES 18,000 – 27,000</td></tr>
+      <tr><td>Retail Shops</td><td class="price-td">KES 18,000 – 26,000</td></tr>
+      <tr><td>Auto Services</td><td class="price-td">KES 16,000 – 24,000</td></tr>
+    </tbody></table>
+    <div class="city-spacer"></div>
+    <div class="city-header"><div class="city-badge">FAST GROWING · ZERO DIGITAL COMPETITION</div><div class="city-name">Eldoret</div></div>
+    <div class="city-desc">~475,000 residents · Kenya's fastest growing inland city · University town + athletics capital of Africa · Exploding retail and hospitality sector · Virtually no local web agencies · Extremely easy cold outreach</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Gyms &amp; Sports Services</td><td class="price-td">KES 18,000 – 28,000</td></tr>
+      <tr><td>Restaurants &amp; Hotels</td><td class="price-td">KES 17,000 – 26,000</td></tr>
+      <tr><td>Retail &amp; Supermarkets</td><td class="price-td">KES 18,000 – 27,000</td></tr>
+      <tr><td>Schools &amp; Tutoring</td><td class="price-td">KES 18,000 – 28,000</td></tr>
+    </tbody></table>
+    <div class="city-spacer"></div>
+    <div class="city-header"><div class="city-badge">LAKE VICTORIA · MOST UNDERSERVED</div><div class="city-name">Kisumu</div></div>
+    <div class="city-desc">~410,000 residents · Western Kenya's main city · Lake Victoria fishing + trade economy · Very underdeveloped digitally even by Kenyan standards · Businesses run almost entirely on word-of-mouth</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Fisheries &amp; Food Trade</td><td class="price-td">KES 16,000 – 25,000</td></tr>
+      <tr><td>Restaurants &amp; Hotels</td><td class="price-td">KES 17,000 – 26,000</td></tr>
+      <tr><td>Retail &amp; Market Traders</td><td class="price-td">KES 16,000 – 24,000</td></tr>
+    </tbody></table>
+    <div class="avoid-note">✕ Avoid Nairobi CBD / Westlands — Kenya's most digitized area, competitive agency market</div>
+    <div class="insight-box"><div class="insight-title">📊 Market Insight</div><div class="insight-text">Kenya has 7.4M SMEs (KNBS 2023) with ~85% lacking a website — one of the highest untapped rates in Africa. English as the official business language removes the language barrier entirely. M-Pesa is the most frictionless payment collection method on the continent — instant, no bank needed. KES 25,000 (~$193) is a premium price here; lead with value over competition from Nairobi freelancers who charge KES 8,000–12,000 for basic sites.</div></div>
+  </div>
+</div>
+
+<!-- GHANA -->
+<div class="country-wrap">
+  <div class="country-header">
+    <div class="country-flag-name">
+      <div class="country-flag">🇬🇭</div>
+      <div><div class="country-title">Ghana</div><div class="country-sub">English · West Africa</div></div>
+    </div>
+    <div class="country-price-block">
+      <div class="price-big">GHS 2,000 – 3,500</div>
+      <div class="price-usd">≈ $130–$230</div>
+      <div class="confidence-row">
+        <div class="conf-block"><div class="stat-label">Data Confidence</div><div class="conf-val conf-MEDIUM">MEDIUM</div></div>
+        <div class="conf-block" style="text-align:left"><div class="stat-label">Payments</div><div class="payments-val">MTN MoMo Chipper Cash Bank Transfer</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="stats-row">
+    <div class="stat-cell"><div class="stat-val">$2,500</div><div class="stat-lbl">GDP per capita</div><div class="stat-src">World Bank 2023</div></div>
+    <div class="stat-cell"><div class="stat-val">~2.8M</div><div class="stat-lbl">Active SMEs</div><div class="stat-src">Ghana Statistical Service</div></div>
+    <div class="stat-cell"><div class="stat-val">82%</div><div class="stat-lbl">SMEs with no website</div><div class="stat-src">GSMA Mobile Economy 2023</div></div>
+  </div>
+  <button class="country-toggle" onclick="toggleCountry(this)">▼ view data breakdown <span class="toggle-icon">▼</span></button>
+  <div class="country-body">
+    <div class="section-label">SUB-REGIONS &amp; INDUSTRY PRICING</div>
+    <div class="city-header"><div class="city-badge">2ND CITY · VERY BEHIND DIGITALLY</div><div class="city-name">Kumasi</div></div>
+    <div class="city-desc">~3.5M residents (metro) · Ghana's 2nd city and Ashanti commercial capital · Massive textile, food, and retail economy · Extremely low digital adoption despite high business activity · Very receptive to cold outreach</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Textile &amp; Fashion Traders</td><td class="price-td">GHS 2,200 – 3,500</td></tr>
+      <tr><td>Restaurants &amp; Chop Bars</td><td class="price-td">GHS 2,000 – 3,200</td></tr>
+      <tr><td>Retail &amp; Trading</td><td class="price-td">GHS 1,800 – 3,000</td></tr>
+      <tr><td>Auto Services</td><td class="price-td">GHS 2,000 – 3,000</td></tr>
+      <tr><td>Beauty Salons</td><td class="price-td">GHS 1,800 – 2,800</td></tr>
+    </tbody></table>
+    <div class="city-spacer"></div>
+    <div class="city-header"><div class="city-badge">OIL CITY · EXPANDING BUT OFFLINE</div><div class="city-name">Takoradi (Sekondi)</div></div>
+    <div class="city-desc">~600,000 residents · Ghana's oil &amp; gas hub since 2010 discoveries · New money in the economy but businesses haven't digitized · Port city with strong trading companies · Rising entrepreneur class actively looking to grow</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Oil Industry Services</td><td class="price-td">GHS 2,500 – 4,000</td></tr>
+      <tr><td>Restaurants &amp; Food</td><td class="price-td">GHS 2,000 – 3,200</td></tr>
+      <tr><td>Retail &amp; Trading</td><td class="price-td">GHS 1,800 – 3,000</td></tr>
+      <tr><td>Hotels &amp; Guesthouses</td><td class="price-td">GHS 2,200 – 3,500</td></tr>
+    </tbody></table>
+    <div class="city-spacer"></div>
+    <div class="city-header"><div class="city-badge">DENSE MICRO-BUSINESS BELT</div><div class="city-name">Accra Outskirts (Tema / Kasoa)</div></div>
+    <div class="city-desc">Tema: industrial port suburb, ~500k residents · Kasoa: fastest-growing peri-urban area, ~800k residents · Highest density of micro-businesses in Ghana · Almost zero web presence · Massive cold outreach volume play</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Restaurants &amp; Food Spots</td><td class="price-td">GHS 2,200 – 3,500</td></tr>
+      <tr><td>Retail &amp; Provision Stores</td><td class="price-td">GHS 2,000 – 3,200</td></tr>
+      <tr><td>Salons &amp; Barbershops</td><td class="price-td">GHS 1,800 – 3,000</td></tr>
+      <tr><td>Gyms &amp; Fitness</td><td class="price-td">GHS 2,000 – 3,200</td></tr>
+    </tbody></table>
+    <div class="avoid-note">✕ Avoid Accra CBD / Airport Residential — competitive agency market, price-sensitive tech-aware clients</div>
+    <div class="insight-box"><div class="insight-title">📊 Market Insight</div><div class="insight-text">Ghana has ~2.8M SMEs (Ghana Statistical Service) with 82% lacking a website — roughly 2.3M businesses. English is the sole official business language. MTN MoMo has 18M+ active users in Ghana, making payment collection easier than bank transfer. GHS is volatile (currently ~15.5 GHS/$1), so consider USD-denominated pricing and converting via Chipper Cash for better rates. At GHS 3,000 (~$194) Ghana is a volume market — strong for building a client base quickly.</div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════ MIDDLE EAST ═══════════════════ -->
+<div id="middle-east" class="continent-anchor">
+  <div class="continent-banner">
+    <span class="continent-name">🕌 MIDDLE EAST</span>
+    <span class="continent-count">Top 5 Countries · Gulf High-Income Markets</span>
+  </div>
+</div>
+
+<!-- QATAR -->
+<div class="country-wrap">
+  <div class="country-header">
+    <div class="country-flag-name">
+      <div class="country-flag">🇶🇦</div>
+      <div><div class="country-title">Qatar</div><div class="country-sub">Arabic + English · Gulf</div></div>
+    </div>
+    <div class="country-price-block">
+      <div class="price-big">QAR 1,800 – 3,500</div>
+      <div class="price-usd">≈ $495–$960</div>
+      <div class="confidence-row">
+        <div class="conf-block"><div class="stat-label">Data Confidence</div><div class="conf-val conf-MED-HIGH">MED-HIGH</div></div>
+        <div class="conf-block" style="text-align:left"><div class="stat-label">Payments</div><div class="payments-val">Wise Payoneer SWIFT</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="stats-row">
+    <div class="stat-cell"><div class="stat-val">$83,900</div><div class="stat-lbl">GDP per capita — highest globally</div><div class="stat-src">World Bank 2023</div></div>
+    <div class="stat-cell"><div class="stat-val">~17,000</div><div class="stat-lbl">Active SMEs</div><div class="stat-src">QFC / MOCI Qatar 2023</div></div>
+    <div class="stat-cell"><div class="stat-val">51%</div><div class="stat-lbl">SMEs with no website</div><div class="stat-src">QCCA Digital Readiness Survey 2022</div></div>
+  </div>
+  <button class="country-toggle" onclick="toggleCountry(this)">▼ view data breakdown <span class="toggle-icon">▼</span></button>
+  <div class="country-body">
+    <div class="section-label">SUB-REGIONS &amp; INDUSTRY PRICING</div>
+    <div class="city-header"><div class="city-badge">FASTEST GROWING DISTRICT — BELOW RADAR</div><div class="city-name">Al Wakra</div></div>
+    <div class="city-desc">~130,000 residents · Formerly a fishing village, now fast-developing suburban city · Dense with new restaurants, retail, and service businesses that opened post-World Cup 2022 · Most launched with Instagram only, no website · Very low local agency competition</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Restaurants &amp; Cafes</td><td class="price-td">QAR 1,800 – 2,800</td></tr>
+      <tr><td>Retail &amp; Trading</td><td class="price-td">QAR 2,000 – 3,000</td></tr>
+      <tr><td>Beauty Salons &amp; Spas</td><td class="price-td">QAR 1,800 – 2,800</td></tr>
+      <tr><td>Gyms &amp; Fitness Studios</td><td class="price-td">QAR 2,000 – 3,200</td></tr>
+    </tbody></table>
+    <div class="city-spacer"></div>
+    <div class="city-header"><div class="city-badge">SME BELT — OFFLINE TRADING BUSINESSES</div><div class="city-name">Al Rayyan (Industrial / Outskirts)</div></div>
+    <div class="city-desc">~600,000 residents · Qatar's most populous municipality outside Doha · Home to thousands of small manufacturing, contracting, and trading businesses · B2B companies with no digital presence despite high revenues · Low outreach competition vs Doha center</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Construction &amp; Contracting</td><td class="price-td">QAR 2,500 – 3,500</td></tr>
+      <tr><td>Technical &amp; Maintenance Services</td><td class="price-td">QAR 2,200 – 3,200</td></tr>
+      <tr><td>Trading &amp; Import/Export</td><td class="price-td">QAR 2,000 – 3,000</td></tr>
+      <tr><td>Restaurants</td><td class="price-td">QAR 1,800 – 2,800</td></tr>
+    </tbody></table>
+    <div class="city-spacer"></div>
+    <div class="city-header"><div class="city-badge">POST-WORLD CUP NEW CITY</div><div class="city-name">Lusail Outskirts (New Developments)</div></div>
+    <div class="city-desc">~50,000+ new residents · Lusail City was built for the 2022 World Cup · Dozens of new gyms, clinics, retail, and food businesses opened 2022-2024 with no digital presence · English + Arabic bilingual sites are the baseline expectation</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Medical &amp; Dental Clinics</td><td class="price-td">QAR 2,500 – 3,500</td></tr>
+      <tr><td>Restaurants &amp; Cafes</td><td class="price-td">QAR 2,000 – 3,000</td></tr>
+      <tr><td>Gyms &amp; Wellness Centers</td><td class="price-td">QAR 2,200 – 3,200</td></tr>
+      <tr><td>Nurseries &amp; Education</td><td class="price-td">QAR 2,200 – 3,200</td></tr>
+    </tbody></table>
+    <div class="avoid-note">✕ Avoid Doha West Bay / Pearl-Qatar — enterprise market, agencies charge QAR 8,000–25,000+</div>
+    <div class="insight-box"><div class="insight-title">📊 Market Insight</div><div class="insight-text">Qatar has the highest GDP per capita on earth at $83,900 (World Bank 2023). The World Cup 2022 triggered a massive wave of new SME openings — hotels, restaurants, wellness centers, tour operators — that launched on Instagram and never built a website. QCCA reports 51% of SMEs still have no website (~8,700 businesses in a compact country with zero cold outreach competition from freelancers). Arabic + English bilingual sites command a 20–30% premium. Qatar is your highest price-per-project Gulf market outside Dubai enterprise.</div></div>
+  </div>
+</div>
+
+<!-- KUWAIT -->
+<div class="country-wrap">
+  <div class="country-header">
+    <div class="country-flag-name">
+      <div class="country-flag">🇰🇼</div>
+      <div><div class="country-title">Kuwait</div><div class="country-sub">Arabic + English · Gulf</div></div>
+    </div>
+    <div class="country-price-block">
+      <div class="price-big">KWD 155 – 310</div>
+      <div class="price-usd">≈ $505–$1,010</div>
+      <div class="confidence-row">
+        <div class="conf-block"><div class="stat-label">Data Confidence</div><div class="conf-val conf-MED-HIGH">MED-HIGH</div></div>
+        <div class="conf-block" style="text-align:left"><div class="stat-label">Payments</div><div class="payments-val">Wise Payoneer SWIFT</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="stats-row">
+    <div class="stat-cell"><div class="stat-val">$53,000</div><div class="stat-lbl">GDP per capita</div><div class="stat-src">World Bank 2023</div></div>
+    <div class="stat-cell"><div class="stat-val">~45,000</div><div class="stat-lbl">Active SMEs</div><div class="stat-src">Kuwait SME Fund / PACI 2023</div></div>
+    <div class="stat-cell"><div class="stat-val">55%</div><div class="stat-lbl">SMEs with no website</div><div class="stat-src">iGov Kuwait Digital Survey 2022</div></div>
+  </div>
+  <button class="country-toggle" onclick="toggleCountry(this)">▼ view data breakdown <span class="toggle-icon">▼</span></button>
+  <div class="country-body">
+    <div class="section-label">SUB-REGIONS &amp; INDUSTRY PRICING</div>
+    <div class="city-header"><div class="city-badge">DENSEST COMMERCIAL DISTRICT — VERY OFFLINE</div><div class="city-name">Hawalli</div></div>
+    <div class="city-desc">~850,000 residents · Kuwait's most commercially packed governorate · Mix of Kuwaiti businesses and expat-owned SMEs · Dense restaurant, beauty, and retail strip that runs almost entirely on Instagram and word-of-mouth · Easy cold outreach with high reply rates</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Restaurants &amp; Cafes</td><td class="price-td">KWD 155 – 250</td></tr>
+      <tr><td>Beauty Salons &amp; Spas</td><td class="price-td">KWD 155 – 240</td></tr>
+      <tr><td>Retail &amp; Trading</td><td class="price-td">KWD 170 – 270</td></tr>
+      <tr><td>Gyms &amp; Fitness</td><td class="price-td">KWD 175 – 280</td></tr>
+    </tbody></table>
+    <div class="city-spacer"></div>
+    <div class="city-header"><div class="city-badge">COASTAL COMMERCIAL BELT — SME HOTSPOT</div><div class="city-name">Salmiya</div></div>
+    <div class="city-desc">~120,000 permanent residents + high commercial traffic · Kuwait's main shopping and dining strip · Hundreds of small businesses with outdated or no web presence · Younger Kuwaiti entrepreneurs starting post-COVID businesses who haven't gone beyond Instagram</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Restaurants &amp; Food Concepts</td><td class="price-td">KWD 175 – 280</td></tr>
+      <tr><td>Wellness &amp; Beauty</td><td class="price-td">KWD 155 – 255</td></tr>
+      <tr><td>Fashion Boutiques</td><td class="price-td">KWD 160 – 260</td></tr>
+      <tr><td>Medical &amp; Dental</td><td class="price-td">KWD 200 – 310</td></tr>
+    </tbody></table>
+    <div class="city-spacer"></div>
+    <div class="city-header"><div class="city-badge">CORPORATE SME BELT — B2B OPPORTUNITY</div><div class="city-name">Ahmadi (Oil District)</div></div>
+    <div class="city-desc">~60,000 residents · Kuwait Oil Company hub · High density of technical services, maintenance companies, and B2B suppliers with zero web presence · Corporate clients here pay at the top of the range without negotiation</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Technical &amp; Engineering Services</td><td class="price-td">KWD 240 – 310</td></tr>
+      <tr><td>Contracting &amp; Construction</td><td class="price-td">KWD 220 – 300</td></tr>
+      <tr><td>Supply &amp; Trading</td><td class="price-td">KWD 190 – 280</td></tr>
+    </tbody></table>
+    <div class="avoid-note">✕ Avoid Kuwait City CBD / Sharq — enterprise agencies dominate, different buying cycle</div>
+    <div class="insight-box"><div class="insight-title">📊 Market Insight</div><div class="insight-text">KWD is the highest-valued currency in the world (~3.26 USD per 1 KWD). At KWD 220 you earn ~$717 per project. Kuwait SME Fund data shows 55% of 45,000 registered SMEs have no website (~24,750 businesses) in a country of just 4.9M people. The country is tiny, so you can prospect entire commercial districts from a Google Maps search in one afternoon. Arabic-first messages convert better; English is widely understood.</div></div>
+  </div>
+</div>
+
+<!-- BAHRAIN -->
+<div class="country-wrap">
+  <div class="country-header">
+    <div class="country-flag-name">
+      <div class="country-flag">🇧🇭</div>
+      <div><div class="country-title">Bahrain</div><div class="country-sub">Arabic + English · Gulf</div></div>
+    </div>
+    <div class="country-price-block">
+      <div class="price-big">BHD 185 – 370</div>
+      <div class="price-usd">≈ $490–$980</div>
+      <div class="confidence-row">
+        <div class="conf-block"><div class="stat-label">Data Confidence</div><div class="conf-val conf-MED-HIGH">MED-HIGH</div></div>
+        <div class="conf-block" style="text-align:left"><div class="stat-label">Payments</div><div class="payments-val">Wise Payoneer SWIFT</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="stats-row">
+    <div class="stat-cell"><div class="stat-val">$52,000</div><div class="stat-lbl">GDP per capita</div><div class="stat-src">World Bank 2023</div></div>
+    <div class="stat-cell"><div class="stat-val">~55,000</div><div class="stat-lbl">Active SMEs</div><div class="stat-src">Tamkeen Bahrain 2023</div></div>
+    <div class="stat-cell"><div class="stat-val">49%</div><div class="stat-lbl">SMEs with no website</div><div class="stat-src">Tamkeen Digital Readiness Report 2023</div></div>
+  </div>
+  <button class="country-toggle" onclick="toggleCountry(this)">▼ view data breakdown <span class="toggle-icon">▼</span></button>
+  <div class="country-body">
+    <div class="section-label">SUB-REGIONS &amp; INDUSTRY PRICING</div>
+    <div class="city-header"><div class="city-badge">ISLAND CITY — TRADITIONAL SME BASE</div><div class="city-name">Muharraq</div></div>
+    <div class="city-desc">~175,000 residents · Bahrain's historic commercial island · Traditional trading, food, retail businesses that have never moved online · Far less digitized than Manama center · Old-school business culture = easier conversion once trust is established</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Restaurants &amp; Traditional Food</td><td class="price-td">BHD 185 – 280</td></tr>
+      <tr><td>Retail &amp; Textile Traders</td><td class="price-td">BHD 185 – 275</td></tr>
+      <tr><td>Auto Services</td><td class="price-td">BHD 180 – 265</td></tr>
+      <tr><td>Beauty Salons</td><td class="price-td">BHD 185 – 270</td></tr>
+    </tbody></table>
+    <div class="city-spacer"></div>
+    <div class="city-header"><div class="city-badge">SUBURBAN RESIDENTIAL-COMMERCIAL MIX</div><div class="city-name">Riffa / Isa Town</div></div>
+    <div class="city-desc">~200,000 combined residents · Two of Bahrain's most populated suburbs · High density of neighbourhood restaurants, clinics, salons and retail shops relying entirely on word-of-mouth · Very low digital agency penetration</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Clinics &amp; Pharmacies</td><td class="price-td">BHD 240 – 370</td></tr>
+      <tr><td>Restaurants &amp; Cafes</td><td class="price-td">BHD 185 – 290</td></tr>
+      <tr><td>Beauty &amp; Wellness</td><td class="price-td">BHD 185 – 280</td></tr>
+      <tr><td>Nurseries &amp; Schools</td><td class="price-td">BHD 200 – 310</td></tr>
+    </tbody></table>
+    <div class="avoid-note">✕ Avoid Manama Diplomatic Area / Seef District — agency-saturated, enterprise clients, long decision cycles</div>
+    <div class="insight-box"><div class="insight-title">📊 Market Insight</div><div class="insight-text">Bahrain has the most open and liberal economy in the Gulf — the easiest country for a foreign freelancer to win clients. Tamkeen (government SME fund) actively subsidizes digital services, meaning businesses are being pushed to buy web services by the government itself. ~26,950 businesses with no website across a tiny island nation. Bahrain's location makes it a hub for Saudi spillover business — many Bahraini businesses serve the Eastern Province Saudi market via the King Fahd Causeway.</div></div>
+  </div>
+</div>
+
+<!-- UAE -->
+<div class="country-wrap">
+  <div class="country-header">
+    <div class="country-flag-name">
+      <div class="country-flag">🇦🇪</div>
+      <div><div class="country-title">UAE</div><div class="country-sub">Arabic / English · Gulf</div></div>
+    </div>
+    <div class="country-price-block">
+      <div class="price-big">AED 1,800 – 3,500</div>
+      <div class="price-usd">≈ $490–$950</div>
+      <div class="confidence-row">
+        <div class="conf-block"><div class="stat-label">Data Confidence</div><div class="conf-val conf-MED-HIGH">MED-HIGH</div></div>
+        <div class="conf-block" style="text-align:left"><div class="stat-label">Payments</div><div class="payments-val">Wise Payoneer SWIFT</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="stats-row">
+    <div class="stat-cell"><div class="stat-val">$49,000</div><div class="stat-lbl">GDP per capita</div><div class="stat-src">World Bank 2023</div></div>
+    <div class="stat-cell"><div class="stat-val">~577k</div><div class="stat-lbl">Active SMEs (UAE)</div><div class="stat-src">Dubai SME / MOE 2023</div></div>
+    <div class="stat-cell"><div class="stat-val">44%</div><div class="stat-lbl">SMEs with no website</div><div class="stat-src">Dubai SME Survey 2022</div></div>
+  </div>
+  <button class="country-toggle" onclick="toggleCountry(this)">▼ view data breakdown <span class="toggle-icon">▼</span></button>
+  <div class="country-body">
+    <div class="section-label">SUB-REGIONS &amp; INDUSTRY PRICING</div>
+    <div class="city-header"><div class="city-badge">DENSE SME MARKET</div><div class="city-name">Sharjah</div></div>
+    <div class="city-desc">~1.8M residents · 3rd most populous emirate · Dense small business ecosystem · Far less digitized than Dubai · Lower local agency competition than Dubai</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Restaurants &amp; Cafés</td><td class="price-td">AED 1,800 – 2,800</td></tr>
+      <tr><td>Beauty Salons &amp; Spas</td><td class="price-td">AED 1,800 – 2,600</td></tr>
+      <tr><td>Retail &amp; Trading</td><td class="price-td">AED 2,000 – 3,000</td></tr>
+      <tr><td>Medical Clinics</td><td class="price-td">AED 2,500 – 3,500</td></tr>
+      <tr><td>Nurseries &amp; Education</td><td class="price-td">AED 2,000 – 3,000</td></tr>
+    </tbody></table>
+    <div class="city-spacer"></div>
+    <div class="city-header"><div class="city-badge">TRADE HUB · VERY OFFLINE</div><div class="city-name">Deira (Old Dubai)</div></div>
+    <div class="city-desc">~400,000 residents + heavy commercial traffic · Thousands of trading, retail, and gold businesses with zero online presence · High density = efficient cold outreach</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Gold &amp; Jewelry Shops</td><td class="price-td">AED 2,500 – 3,500</td></tr>
+      <tr><td>Retail &amp; Trading Co.</td><td class="price-td">AED 2,200 – 3,200</td></tr>
+      <tr><td>Restaurants</td><td class="price-td">AED 1,800 – 2,800</td></tr>
+      <tr><td>Import/Export Agents</td><td class="price-td">AED 2,500 – 3,500</td></tr>
+    </tbody></table>
+    <div class="city-spacer"></div>
+    <div class="city-header"><div class="city-badge">SMALLEST EMIRATE · LEAST COMPETITION</div><div class="city-name">Ajman</div></div>
+    <div class="city-desc">~500,000 residents · Cheapest emirate to do business in · High density of micro-businesses with zero digital presence · Almost no local web agencies</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Local Retail</td><td class="price-td">AED 1,600 – 2,600</td></tr>
+      <tr><td>Food Businesses</td><td class="price-td">AED 1,600 – 2,500</td></tr>
+      <tr><td>Auto Services</td><td class="price-td">AED 1,500 – 2,400</td></tr>
+      <tr><td>Gyms &amp; Fitness</td><td class="price-td">AED 1,800 – 2,800</td></tr>
+    </tbody></table>
+    <div class="avoid-note">✕ Avoid Downtown Dubai / DIFC — agencies charge AED 8,000–25,000+, different market entirely</div>
+    <div class="insight-box"><div class="insight-title">📊 Market Insight</div><div class="insight-text">UAE's SME sector contributes 53.5% to GDP (Dubai SME 2023). The Dubai Economic Agenda D33 has a digitization push targeting 400,000 SMEs by 2033 — creating active demand. Sharjah specifically has 2x the SME density of Ajman with much lower local agency competition than Dubai. Arabic + English bilingual websites command 20–30% price premium.</div></div>
+  </div>
+</div>
+
+<!-- SAUDI ARABIA -->
+<div class="country-wrap">
+  <div class="country-header">
+    <div class="country-flag-name">
+      <div class="country-flag">🇸🇦</div>
+      <div><div class="country-title">Saudi Arabia</div><div class="country-sub">Arabic · Vision 2030 market</div></div>
+    </div>
+    <div class="country-price-block">
+      <div class="price-big">SAR 1,800 – 3,500</div>
+      <div class="price-usd">≈ $480–$930</div>
+      <div class="confidence-row">
+        <div class="conf-block"><div class="stat-label">Data Confidence</div><div class="conf-val conf-MED-HIGH">MED-HIGH</div></div>
+        <div class="conf-block" style="text-align:left"><div class="stat-label">Payments</div><div class="payments-val">Wise Payoneer SWIFT</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="stats-row">
+    <div class="stat-cell"><div class="stat-val">$29,900</div><div class="stat-lbl">GDP per capita</div><div class="stat-src">World Bank 2023</div></div>
+    <div class="stat-cell"><div class="stat-val">~830k</div><div class="stat-lbl">Active SMEs</div><div class="stat-src">MONSHA'AT 2023</div></div>
+    <div class="stat-cell"><div class="stat-val">58%</div><div class="stat-lbl">SMEs with no website</div><div class="stat-src">MONSHA'AT Digital Survey</div></div>
+  </div>
+  <button class="country-toggle" onclick="toggleCountry(this)">▼ view data breakdown <span class="toggle-icon">▼</span></button>
+  <div class="country-body">
+    <div class="section-label">SUB-REGIONS &amp; INDUSTRY PRICING</div>
+    <div class="city-header"><div class="city-badge">COMMERCIAL CAPITAL</div><div class="city-name">Jeddah</div></div>
+    <div class="city-desc">~4.7M residents · Most cosmopolitan Saudi city · Biggest retail + F&B market in KSA · Women's business sector booming post-Vision 2030 reforms</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Restaurants &amp; Cafés</td><td class="price-td">SAR 2,000 – 3,200</td></tr>
+      <tr><td>Fashion &amp; Boutiques</td><td class="price-td">SAR 2,000 – 3,000</td></tr>
+      <tr><td>Beauty Salons (Women's)</td><td class="price-td">SAR 1,800 – 3,000</td></tr>
+      <tr><td>Gyms &amp; Fitness Studios</td><td class="price-td">SAR 2,000 – 3,200</td></tr>
+      <tr><td>Medical &amp; Dental Clinics</td><td class="price-td">SAR 2,500 – 3,500</td></tr>
+    </tbody></table>
+    <div class="city-spacer"></div>
+    <div class="city-header"><div class="city-badge">OIL REGION · CORPORATE HUB</div><div class="city-name">Dammam / Al-Khobar</div></div>
+    <div class="city-desc">~1.4M residents · Eastern Province oil heartland · Large expat &amp; corporate workforce · Mix of B2B services and SMEs · Less saturated than Riyadh center</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Corporate Services</td><td class="price-td">SAR 2,500 – 3,500</td></tr>
+      <tr><td>Restaurants &amp; Cafés</td><td class="price-td">SAR 2,000 – 3,000</td></tr>
+      <tr><td>Medical &amp; Dental Clinics</td><td class="price-td">SAR 2,500 – 3,500</td></tr>
+      <tr><td>Retail &amp; Trading</td><td class="price-td">SAR 2,000 – 3,000</td></tr>
+    </tbody></table>
+    <div class="city-spacer"></div>
+    <div class="city-header"><div class="city-badge">CAPITAL · SUBURBAN GROWTH</div><div class="city-name">Riyadh (Outer Districts)</div></div>
+    <div class="city-desc">~8M residents · Avoid city center agencies · Target Al-Malaz, Suwaidi &amp; outer districts · Thousands of new SMEs from Vision 2030 entrepreneurship push · Very low digital presence outside central business areas</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Restaurants &amp; Shawarma Shops</td><td class="price-td">SAR 2,000 – 3,200</td></tr>
+      <tr><td>Gyms &amp; Fitness Studios</td><td class="price-td">SAR 2,000 – 3,200</td></tr>
+      <tr><td>Barber Shops &amp; Salons</td><td class="price-td">SAR 1,800 – 2,800</td></tr>
+      <tr><td>Private Schools &amp; Tutoring</td><td class="price-td">SAR 2,200 – 3,200</td></tr>
+      <tr><td>Local Retail &amp; Supermarkets</td><td class="price-td">SAR 1,800 – 2,800</td></tr>
+    </tbody></table>
+    <div class="avoid-note">✕ Avoid Riyadh KAFD / Olaya District — enterprise market, agencies charge SAR 8,000–20,000+</div>
+    <div class="insight-box"><div class="insight-title">📊 Market Insight</div><div class="insight-text">Saudi Vision 2030 is driving SME digitization at scale — MONSHA'AT reports 830k active SMEs with 58% lacking a website (~480k businesses). The government's Jadara SME digital program actively subsidizes web services. Jeddah has the highest SME outreach receptivity due to its cosmopolitan culture. Arabic-only sites are the baseline expectation; bilingual Arabic/English sites command a 15–25% price premium.</div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════ ASIA ═══════════════════ -->
+<div id="asia" class="continent-anchor">
+  <div class="continent-banner">
+    <span class="continent-name">🌏 ASIA</span>
+    <span class="continent-count">Top 5 Countries · World's Largest SME Base</span>
+  </div>
+</div>
+
+<!-- INDIA -->
+<div class="country-wrap">
+  <div class="country-header">
+    <div class="country-flag-name">
+      <div class="country-flag">🇮🇳</div>
+      <div><div class="country-title">India</div><div class="country-sub">English + Hindi · South Asia</div></div>
+    </div>
+    <div class="country-price-block">
+      <div class="price-big">INR 15,000 – 35,000</div>
+      <div class="price-usd">≈ $180–$420</div>
+      <div class="confidence-row">
+        <div class="conf-block"><div class="stat-label">Data Confidence</div><div class="conf-val conf-HIGH">HIGH</div></div>
+        <div class="conf-block" style="text-align:left"><div class="stat-label">Payments</div><div class="payments-val">Wise Payoneer Razorpay (local)</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="stats-row">
+    <div class="stat-cell"><div class="stat-val">$9,100</div><div class="stat-lbl">GDP per capita PPP</div><div class="stat-src">World Bank 2023</div></div>
+    <div class="stat-cell"><div class="stat-val">~63M</div><div class="stat-lbl">Active SMEs</div><div class="stat-src">MSME Ministry India 2023</div></div>
+    <div class="stat-cell"><div class="stat-val">73%</div><div class="stat-lbl">SMEs with no website</div><div class="stat-src">NASSCOM / Google India SME Survey 2023</div></div>
+  </div>
+  <button class="country-toggle" onclick="toggleCountry(this)">▼ view data breakdown <span class="toggle-icon">▼</span></button>
+  <div class="country-body">
+    <div class="section-label">SUB-REGIONS &amp; INDUSTRY PRICING</div>
+    <div class="city-header"><div class="city-badge">LARGEST OFFLINE COMMERCIAL CITY IN INDIA</div><div class="city-name">Surat (Gujarat)</div></div>
+    <div class="city-desc">~7.8M residents · India's diamond and textile capital · Handles 90% of the world's diamond cutting — mostly offline family businesses · One of India's richest cities by per-capita business income but shockingly low web adoption · Less agency competition than Mumbai or Delhi</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Diamond &amp; Jewelry Traders</td><td class="price-td">INR 22,000 – 35,000</td></tr>
+      <tr><td>Textile &amp; Fabric Exporters</td><td class="price-td">INR 20,000 – 32,000</td></tr>
+      <tr><td>Restaurants &amp; Tiffin Services</td><td class="price-td">INR 15,000 – 25,000</td></tr>
+      <tr><td>Manufacturing &amp; Plastics</td><td class="price-td">INR 18,000 – 30,000</td></tr>
+      <tr><td>Beauty Salons</td><td class="price-td">INR 14,000 – 22,000</td></tr>
+    </tbody></table>
+    <div class="city-spacer"></div>
+    <div class="city-header"><div class="city-badge">INDUSTRIAL CITY — VERY LOW DIGITAL ADOPTION</div><div class="city-name">Coimbatore (Tamil Nadu)</div></div>
+    <div class="city-desc">~2.2M residents · South India's textile and pump manufacturing hub · Home to 25,000+ textile mills and engineering firms almost all without websites · Called the 'Manchester of South India' · English literacy is high (Tamil Nadu has India's best English education)</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Textile &amp; Garment Factories</td><td class="price-td">INR 18,000 – 30,000</td></tr>
+      <tr><td>Engineering &amp; Pumps</td><td class="price-td">INR 20,000 – 35,000</td></tr>
+      <tr><td>Restaurants &amp; Hotels</td><td class="price-td">INR 14,000 – 22,000</td></tr>
+      <tr><td>Clinics &amp; Medical</td><td class="price-td">INR 18,000 – 28,000</td></tr>
+    </tbody></table>
+    <div class="city-spacer"></div>
+    <div class="city-header"><div class="city-badge">INDIA'S BICYCLE &amp; HOSIERY CAPITAL — HUGE B2B GAP</div><div class="city-name">Ludhiana (Punjab)</div></div>
+    <div class="city-desc">~1.6M residents · Punjab's largest city · World's largest bicycle manufacturing hub · Hosiery, apparel, and auto parts industries · Thousands of family-run factories exporting globally with zero website · Perfect for B2B-focused web outreach</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Bicycle &amp; Auto Parts Manufacturing</td><td class="price-td">INR 20,000 – 35,000</td></tr>
+      <tr><td>Hosiery &amp; Apparel Exporters</td><td class="price-td">INR 18,000 – 30,000</td></tr>
+      <tr><td>Dhaba &amp; Restaurant Chains</td><td class="price-td">INR 15,000 – 24,000</td></tr>
+      <tr><td>Auto Services</td><td class="price-td">INR 14,000 – 22,000</td></tr>
+    </tbody></table>
+    <div class="city-spacer"></div>
+    <div class="city-header"><div class="city-badge">FASTEST GROWING TIER 2 CITY IN INDIA</div><div class="city-name">Indore (Madhya Pradesh)</div></div>
+    <div class="city-desc">~3.3M residents · India's fastest-growing Tier 2 city · Strong food processing, retail, and startup ecosystem · Middle India's most commercially active city · Young entrepreneur population very receptive to cold outreach</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Restaurants &amp; Cloud Kitchens</td><td class="price-td">INR 15,000 – 26,000</td></tr>
+      <tr><td>Retail &amp; Fashion</td><td class="price-td">INR 15,000 – 24,000</td></tr>
+      <tr><td>Clinics &amp; Dental</td><td class="price-td">INR 18,000 – 28,000</td></tr>
+      <tr><td>Event Services &amp; Decorators</td><td class="price-td">INR 16,000 – 27,000</td></tr>
+    </tbody></table>
+    <div class="avoid-note">✕ Avoid Mumbai South / Bengaluru Koramangala / Delhi CP — most digitized in India, agencies charge INR 50,000–2,00,000+</div>
+    <div class="insight-box"><div class="insight-title">📊 Market Insight</div><div class="insight-text">India has 63 million SMEs — the 2nd largest SME base in the world — with 73% lacking a professional website (~46M businesses). English is a co-official business language, removing the language barrier entirely. NASSCOM 2023: Indian SME owners are the most price-sensitive in Asia — your competitive advantage is price and speed vs local agencies (INR 50k–1.5L for the same work). Surat alone has an estimated 300,000+ offline businesses in diamond, textile, and retail.</div></div>
+  </div>
+</div>
+
+<!-- PHILIPPINES -->
+<div class="country-wrap">
+  <div class="country-header">
+    <div class="country-flag-name">
+      <div class="country-flag">🇵🇭</div>
+      <div><div class="country-title">Philippines</div><div class="country-sub">English · Southeast Asia</div></div>
+    </div>
+    <div class="country-price-block">
+      <div class="price-big">PHP 20,000 – 45,000</div>
+      <div class="price-usd">≈ $350–$790</div>
+      <div class="confidence-row">
+        <div class="conf-block"><div class="stat-label">Data Confidence</div><div class="conf-val conf-HIGH">HIGH</div></div>
+        <div class="conf-block" style="text-align:left"><div class="stat-label">Payments</div><div class="payments-val">Wise Payoneer GCash</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="stats-row">
+    <div class="stat-cell"><div class="stat-val">$10,200</div><div class="stat-lbl">GDP per capita PPP</div><div class="stat-src">World Bank 2023</div></div>
+    <div class="stat-cell"><div class="stat-val">~1.07M</div><div class="stat-lbl">Active SMEs</div><div class="stat-src">DTI Philippines 2023</div></div>
+    <div class="stat-cell"><div class="stat-val">70%</div><div class="stat-lbl">SMEs with no website</div><div class="stat-src">DICT / DTI Digital Survey 2022</div></div>
+  </div>
+  <button class="country-toggle" onclick="toggleCountry(this)">▼ view data breakdown <span class="toggle-icon">▼</span></button>
+  <div class="country-body">
+    <div class="section-label">SUB-REGIONS &amp; INDUSTRY PRICING</div>
+    <div class="city-header"><div class="city-badge">2ND LARGEST CITY — BOOMING BUT VERY OFFLINE</div><div class="city-name">Cebu City</div></div>
+    <div class="city-desc">~950,000 residents (3M+ metro) · Philippines' second commercial capital · Tourism, shipping, and BPO economy · Many hospitality businesses with no website despite heavy international traffic · Local web agencies expensive and slow — cold outreach converts quickly</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Tourism &amp; Resorts</td><td class="price-td">PHP 28,000 – 45,000</td></tr>
+      <tr><td>Restaurants &amp; Cafes</td><td class="price-td">PHP 20,000 – 34,000</td></tr>
+      <tr><td>Medical &amp; Dental Clinics</td><td class="price-td">PHP 28,000 – 42,000</td></tr>
+      <tr><td>Retail &amp; Fashion</td><td class="price-td">PHP 20,000 – 32,000</td></tr>
+      <tr><td>Beauty &amp; Wellness</td><td class="price-td">PHP 18,000 – 28,000</td></tr>
+    </tbody></table>
+    <div class="city-spacer"></div>
+    <div class="city-header"><div class="city-badge">FASTEST GROWING PHILIPPINE CITY — LOW COMPETITION</div><div class="city-name">Davao City (Mindanao)</div></div>
+    <div class="city-desc">~1.8M residents · Mindanao's main city · Agribusiness capital of the Philippines · Durian, banana, and cacao exporters almost entirely offline · Safe, stable, and very commercially active · Almost no international freelancers targeting this market</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Agriculture &amp; Export (Fruits)</td><td class="price-td">PHP 28,000 – 45,000</td></tr>
+      <tr><td>Restaurants &amp; Hotels</td><td class="price-td">PHP 20,000 – 32,000</td></tr>
+      <tr><td>Gyms &amp; Fitness</td><td class="price-td">PHP 20,000 – 30,000</td></tr>
+      <tr><td>Medical Clinics</td><td class="price-td">PHP 25,000 – 38,000</td></tr>
+    </tbody></table>
+    <div class="city-spacer"></div>
+    <div class="city-header"><div class="city-badge">HERITAGE CITY — VERY LOW DIGITAL PENETRATION</div><div class="city-name">Iloilo City (Visayas)</div></div>
+    <div class="city-desc">~470,000 residents · Western Visayas main hub · Strong food, retail, and tourism base · Known for heritage tourism but almost no tourism businesses have websites · Very few local web agencies · Cold outreach conversion is among the highest in the Philippines</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Hotels &amp; Heritage Tourism</td><td class="price-td">PHP 25,000 – 40,000</td></tr>
+      <tr><td>Restaurants &amp; Food</td><td class="price-td">PHP 20,000 – 32,000</td></tr>
+      <tr><td>Retail &amp; Fashion</td><td class="price-td">PHP 18,000 – 28,000</td></tr>
+    </tbody></table>
+    <div class="city-spacer"></div>
+    <div class="city-header"><div class="city-badge">NORTHERN MINDANAO — COMMERCIAL CROSSROADS</div><div class="city-name">Cagayan de Oro</div></div>
+    <div class="city-desc">~730,000 residents · Gateway city for northern Mindanao · Adventure tourism is booming (white water rafting, Camiguin island) · Food and retail sector growing fast · Businesses are digitally aware (university town) but budgets are low — extremely receptive to affordable web offers</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Adventure Tourism &amp; Activities</td><td class="price-td">PHP 25,000 – 40,000</td></tr>
+      <tr><td>Restaurants &amp; Food Parks</td><td class="price-td">PHP 20,000 – 30,000</td></tr>
+      <tr><td>Retail &amp; Local Brands</td><td class="price-td">PHP 18,000 – 27,000</td></tr>
+    </tbody></table>
+    <div class="avoid-note">✕ Avoid Metro Manila / Makati / BGC — highly digitized, saturated freelancer market, clients are price-aware and slow to decide</div>
+    <div class="insight-box"><div class="insight-title">📊 Market Insight</div><div class="insight-text">The Philippines is the #1 English-speaking country in Asia for cold outreach — every business owner you message responds in fluent English. DTI reports ~1.07M SMEs with 70% lacking a professional website (~750,000 businesses). Philippine SME owners are highly WhatsApp and Facebook Messenger-active — cold DMs on Facebook work just as well as WhatsApp. Tourism businesses in Cebu and Cagayan are specifically motivated because they know international tourists find them via Google.</div></div>
+  </div>
+</div>
+
+<!-- INDONESIA -->
+<div class="country-wrap">
+  <div class="country-header">
+    <div class="country-flag-name">
+      <div class="country-flag">🇮🇩</div>
+      <div><div class="country-title">Indonesia</div><div class="country-sub">Bahasa Indonesia · Southeast Asia</div></div>
+    </div>
+    <div class="country-price-block">
+      <div class="price-big">IDR 3,000,000 – 6,500,000</div>
+      <div class="price-usd">≈ $185–$400</div>
+      <div class="confidence-row">
+        <div class="conf-block"><div class="stat-label">Data Confidence</div><div class="conf-val conf-HIGH">HIGH</div></div>
+        <div class="conf-block" style="text-align:left"><div class="stat-label">Payments</div><div class="payments-val">Wise Payoneer DANA / OVO (local)</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="stats-row">
+    <div class="stat-cell"><div class="stat-val">$15,300</div><div class="stat-lbl">GDP per capita PPP</div><div class="stat-src">World Bank 2023</div></div>
+    <div class="stat-cell"><div class="stat-val">~64M</div><div class="stat-lbl">Active SMEs</div><div class="stat-src">Kemenkop Indonesia 2023</div></div>
+    <div class="stat-cell"><div class="stat-val">76%</div><div class="stat-lbl">SMEs with no website</div><div class="stat-src">Telkom / BPS Digital Survey 2023</div></div>
+  </div>
+  <button class="country-toggle" onclick="toggleCountry(this)">▼ view data breakdown <span class="toggle-icon">▼</span></button>
+  <div class="country-body">
+    <div class="section-label">SUB-REGIONS &amp; INDUSTRY PRICING</div>
+    <div class="city-header"><div class="city-badge">2ND LARGEST CITY — MASSIVE COMMERCIAL BASE</div><div class="city-name">Surabaya</div></div>
+    <div class="city-desc">~3M residents (10M metro) · Indonesia's most important trading city after Jakarta · Industrial, food processing, and manufacturing hubs · Far less digitized than Jakarta · Local agency market smaller — you can undercut easily</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Manufacturing &amp; Trading</td><td class="price-td">IDR 4,500,000 – 6,500,000</td></tr>
+      <tr><td>Restaurants &amp; Warungs</td><td class="price-td">IDR 3,000,000 – 5,000,000</td></tr>
+      <tr><td>Retail &amp; Fashion</td><td class="price-td">IDR 3,500,000 – 5,500,000</td></tr>
+      <tr><td>Clinics &amp; Medical</td><td class="price-td">IDR 4,000,000 – 6,000,000</td></tr>
+    </tbody></table>
+    <div class="city-spacer"></div>
+    <div class="city-header"><div class="city-badge">CREATIVE CITY — HIGH FASHION + FOOD SECTOR</div><div class="city-name">Bandung</div></div>
+    <div class="city-desc">~2.6M residents · Indonesia's fashion and creative industry capital · Thousands of local clothing brands, cafes, and food concepts — mostly Instagram-only · Young entrepreneur culture that values aesthetics and is open to upgrading to a website</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Fashion &amp; Local Clothing Brands</td><td class="price-td">IDR 3,500,000 – 6,000,000</td></tr>
+      <tr><td>Cafes &amp; Food Concepts</td><td class="price-td">IDR 3,000,000 – 5,000,000</td></tr>
+      <tr><td>Creative &amp; Design Studios</td><td class="price-td">IDR 3,500,000 – 5,500,000</td></tr>
+      <tr><td>Boutique Hotels &amp; Guesthouses</td><td class="price-td">IDR 3,500,000 – 5,500,000</td></tr>
+    </tbody></table>
+    <div class="city-spacer"></div>
+    <div class="city-header"><div class="city-badge">3RD LARGEST CITY — DEEPLY OFFLINE</div><div class="city-name">Medan (North Sumatra)</div></div>
+    <div class="city-desc">~2.5M residents · Largest city in Sumatra · Massive palm oil, rubber, and tobacco trade economy · Very low digital adoption — family-run businesses dominate · Almost no international freelancers targeting Medan</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Agri &amp; Palm Oil Exporters</td><td class="price-td">IDR 4,500,000 – 6,500,000</td></tr>
+      <tr><td>Restaurants &amp; Local Food</td><td class="price-td">IDR 3,000,000 – 4,500,000</td></tr>
+      <tr><td>Retail &amp; Trading</td><td class="price-td">IDR 3,000,000 – 5,000,000</td></tr>
+      <tr><td>Auto &amp; Mechanical Services</td><td class="price-td">IDR 2,800,000 – 4,200,000</td></tr>
+    </tbody></table>
+    <div class="city-spacer"></div>
+    <div class="city-header"><div class="city-badge">EASTERN INDONESIA GATEWAY — ZERO COMPETITION</div><div class="city-name">Makassar (South Sulawesi)</div></div>
+    <div class="city-desc">~1.8M residents · Main city of eastern Indonesia · Fisheries, spice trade, and tourism crossroads · Very low digital adoption for commercial size · Almost no local web agencies · Tourism businesses for Raja Ampat and Toraja are based here with no web presence</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Fisheries &amp; Seafood Export</td><td class="price-td">IDR 4,000,000 – 6,000,000</td></tr>
+      <tr><td>Tourism &amp; Tour Operators</td><td class="price-td">IDR 3,500,000 – 5,500,000</td></tr>
+      <tr><td>Restaurants &amp; Hotels</td><td class="price-td">IDR 3,000,000 – 4,800,000</td></tr>
+    </tbody></table>
+    <div class="avoid-note">✕ Avoid Jakarta Selatan / Bali Seminyak — most digitized in Indonesia, high freelancer competition locally and internationally</div>
+    <div class="insight-box"><div class="insight-title">📊 Market Insight</div><div class="insight-text">Indonesia has the 2nd largest SME base in the world at 64M, with 76% lacking a professional website — approximately 48.6M businesses. Key barrier: Bahasa Indonesia is required — English cold outreach converts poorly outside Bali. However, AI translation produces native-quality Indonesian messages. Bandung's fashion and cafe sector is the single best-converting niche because business owners there already care deeply about aesthetics and understand the value of a well-designed online presence.</div></div>
+  </div>
+</div>
+
+<!-- VIETNAM -->
+<div class="country-wrap">
+  <div class="country-header">
+    <div class="country-flag-name">
+      <div class="country-flag">🇻🇳</div>
+      <div><div class="country-title">Vietnam</div><div class="country-sub">Vietnamese + English (business) · Southeast Asia</div></div>
+    </div>
+    <div class="country-price-block">
+      <div class="price-big">VND 5,000,000 – 12,000,000</div>
+      <div class="price-usd">≈ $200–$480</div>
+      <div class="confidence-row">
+        <div class="conf-block"><div class="stat-label">Data Confidence</div><div class="conf-val conf-MED-HIGH">MED-HIGH</div></div>
+        <div class="conf-block" style="text-align:left"><div class="stat-label">Payments</div><div class="payments-val">Wise Payoneer ViettelPay</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="stats-row">
+    <div class="stat-cell"><div class="stat-val">$14,100</div><div class="stat-lbl">GDP per capita PPP</div><div class="stat-src">World Bank 2023</div></div>
+    <div class="stat-cell"><div class="stat-val">~900,000</div><div class="stat-lbl">Registered SMEs</div><div class="stat-src">GSO Vietnam 2023</div></div>
+    <div class="stat-cell"><div class="stat-val">73%</div><div class="stat-lbl">SMEs with no website</div><div class="stat-src">VCCI / Vietnam MOIT 2023</div></div>
+  </div>
+  <button class="country-toggle" onclick="toggleCountry(this)">▼ view data breakdown <span class="toggle-icon">▼</span></button>
+  <div class="country-body">
+    <div class="section-label">SUB-REGIONS &amp; INDUSTRY PRICING</div>
+    <div class="city-header"><div class="city-badge">TOURISM BOOM CITY — HIGHEST MOTIVATION IN VIETNAM</div><div class="city-name">Da Nang</div></div>
+    <div class="city-desc">~1.2M residents · Vietnam's fastest-growing coastal city · Hosted 8M+ visitors in 2023 · Hotels, restaurants, and tour operators exploding in growth — almost none have professional websites · Best English proficiency of any Vietnamese city for cold outreach</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Hotels &amp; Beach Resorts</td><td class="price-td">VND 9,000,000 – 12,000,000</td></tr>
+      <tr><td>Restaurants &amp; Cafes</td><td class="price-td">VND 6,000,000 – 10,000,000</td></tr>
+      <tr><td>Tour Operators &amp; Activities</td><td class="price-td">VND 7,000,000 – 11,000,000</td></tr>
+      <tr><td>Spa &amp; Wellness</td><td class="price-td">VND 6,000,000 – 9,000,000</td></tr>
+    </tbody></table>
+    <div class="city-spacer"></div>
+    <div class="city-header"><div class="city-badge">AGRICULTURAL CAPITAL — FULLY OFFLINE</div><div class="city-name">Can Tho (Mekong Delta)</div></div>
+    <div class="city-desc">~1.3M residents · Vietnam's 4th largest city · Mekong Delta food export and tourism hub · Agricultural exporters, food processors, and river tourism operators all offline · Highest potential in rural-commercial Vietnam</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Agri-Export &amp; Food Processing</td><td class="price-td">VND 6,000,000 – 10,000,000</td></tr>
+      <tr><td>Restaurants &amp; River Dining</td><td class="price-td">VND 5,000,000 – 8,000,000</td></tr>
+      <tr><td>River Tourism &amp; Boat Tours</td><td class="price-td">VND 6,000,000 – 10,000,000</td></tr>
+      <tr><td>Retail &amp; Trading</td><td class="price-td">VND 5,000,000 – 7,500,000</td></tr>
+    </tbody></table>
+    <div class="city-spacer"></div>
+    <div class="city-header"><div class="city-badge">UNESCO HERITAGE TOWN — TOURISM GOLD</div><div class="city-name">Hoi An (Quang Nam)</div></div>
+    <div class="city-desc">~130,000 residents · One of Asia's most visited heritage towns · Silk, tailor, lantern, and hospitality businesses packed into one small city — almost all run on Facebook only · International tourists search Google daily for these businesses</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Tailor Shops &amp; Fashion</td><td class="price-td">VND 7,000,000 – 11,000,000</td></tr>
+      <tr><td>Hotels &amp; Guesthouses</td><td class="price-td">VND 8,000,000 – 12,000,000</td></tr>
+      <tr><td>Restaurants &amp; Cooking Classes</td><td class="price-td">VND 7,000,000 – 11,000,000</td></tr>
+      <tr><td>Tour Operators &amp; Bicycle Rentals</td><td class="price-td">VND 6,000,000 – 9,500,000</td></tr>
+    </tbody></table>
+    <div class="city-spacer"></div>
+    <div class="city-header"><div class="city-badge">BEACH RESORT CITY — RAPIDLY GROWING</div><div class="city-name">Nha Trang</div></div>
+    <div class="city-desc">~550,000 residents · Vietnam's premier beach destination · Russian, Chinese, and Korean tourist wave has transformed it · New hotels and restaurants launched 2021-2024 with no websites · Booming but offline economy = ideal timing for cold outreach</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Hotels &amp; Beach Villas</td><td class="price-td">VND 8,000,000 – 12,000,000</td></tr>
+      <tr><td>Seafood Restaurants</td><td class="price-td">VND 6,000,000 – 10,000,000</td></tr>
+      <tr><td>Diving &amp; Watersports</td><td class="price-td">VND 7,000,000 – 11,000,000</td></tr>
+    </tbody></table>
+    <div class="avoid-note">✕ Avoid Ho Chi Minh City District 1 / Hanoi Old Quarter — highest agency saturation, clients have seen every pitch</div>
+    <div class="insight-box"><div class="insight-title">📊 Market Insight</div><div class="insight-text">VCCI confirms 73% of ~900k registered SMEs have no website — the real number including informal businesses is far higher. Vietnam's travel sector recovered to 12.6M international arrivals in 2023, and tourism SMEs are the #1 highest-converting niche because the owner directly loses money on Google search every day without a website. Da Nang is your entry city: English proficiency is high, motivation is maximum, and hundreds of hotels and tour operators to prospect on Google Maps in an afternoon.</div></div>
+  </div>
+</div>
+
+<!-- PAKISTAN -->
+<div class="country-wrap">
+  <div class="country-header">
+    <div class="country-flag-name">
+      <div class="country-flag">🇵🇰</div>
+      <div><div class="country-title">Pakistan</div><div class="country-sub">English + Urdu · South Asia</div></div>
+    </div>
+    <div class="country-price-block">
+      <div class="price-big">PKR 45,000 – 90,000</div>
+      <div class="price-usd">≈ $160–$320</div>
+      <div class="confidence-row">
+        <div class="conf-block"><div class="stat-label">Data Confidence</div><div class="conf-val conf-MEDIUM">MEDIUM</div></div>
+        <div class="conf-block" style="text-align:left"><div class="stat-label">Payments</div><div class="payments-val">Wise Payoneer JazzCash</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="stats-row">
+    <div class="stat-cell"><div class="stat-val">$6,700</div><div class="stat-lbl">GDP per capita PPP</div><div class="stat-src">World Bank 2023</div></div>
+    <div class="stat-cell"><div class="stat-val">~5.2M</div><div class="stat-lbl">Active SMEs</div><div class="stat-src">SBP Pakistan / SME Policy 2023</div></div>
+    <div class="stat-cell"><div class="stat-val">82%</div><div class="stat-lbl">SMEs with no website</div><div class="stat-src">PTA / SMEDA Digital Survey 2022</div></div>
+  </div>
+  <button class="country-toggle" onclick="toggleCountry(this)">▼ view data breakdown <span class="toggle-icon">▼</span></button>
+  <div class="country-body">
+    <div class="section-label">SUB-REGIONS &amp; INDUSTRY PRICING</div>
+    <div class="city-header"><div class="city-badge">CULTURAL CAPITAL — DENSE COMMERCIAL STRIPS</div><div class="city-name">Lahore (Outside Gulberg / DHA)</div></div>
+    <div class="city-desc">~14M residents · Pakistan's 2nd city · Fashion, food, and retail-dominant economy · Gulberg and DHA are digitized but Johar Town, Township, Garden Town, and Ichra have thousands of offline businesses · Young entrepreneur community very active on WhatsApp</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Fashion Boutiques &amp; Designers</td><td class="price-td">PKR 55,000 – 90,000</td></tr>
+      <tr><td>Restaurants &amp; Food</td><td class="price-td">PKR 48,000 – 80,000</td></tr>
+      <tr><td>Beauty Salons</td><td class="price-td">PKR 45,000 – 72,000</td></tr>
+      <tr><td>Clinics &amp; Medical</td><td class="price-td">PKR 50,000 – 85,000</td></tr>
+    </tbody></table>
+    <div class="city-spacer"></div>
+    <div class="city-header"><div class="city-badge">TEXTILE CAPITAL — MASSIVE B2B OPPORTUNITY</div><div class="city-name">Faisalabad</div></div>
+    <div class="city-desc">~4M residents · Pakistan's 3rd city · Produces 46% of Pakistan's textile exports — almost entirely run by family businesses with no web presence · Textile exporters sell to Europe and the US but communicate with buyers on WhatsApp · Professional websites = credibility leap for exporters</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Textile &amp; Fabric Exporters</td><td class="price-td">PKR 65,000 – 90,000</td></tr>
+      <tr><td>Garment Manufacturers</td><td class="price-td">PKR 60,000 – 90,000</td></tr>
+      <tr><td>Retail &amp; Wholesale</td><td class="price-td">PKR 45,000 – 70,000</td></tr>
+      <tr><td>Restaurants &amp; Hotels</td><td class="price-td">PKR 45,000 – 68,000</td></tr>
+    </tbody></table>
+    <div class="city-spacer"></div>
+    <div class="city-header"><div class="city-badge">WORLD SPORTS EQUIPMENT CAPITAL — EXPORTERS WITHOUT WEBSITES</div><div class="city-name">Sialkot</div></div>
+    <div class="city-desc">~800,000 residents · Produces 70% of the world's footballs and surgical instruments · Thousands of SME exporters who sell to Nike, Adidas, and Puma — but have no website · These businesses need a website badly and know it — highest B2B motivation in Pakistan</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Sports Equipment Exporters</td><td class="price-td">PKR 65,000 – 90,000</td></tr>
+      <tr><td>Surgical &amp; Cutlery Exporters</td><td class="price-td">PKR 65,000 – 90,000</td></tr>
+      <tr><td>Light Manufacturing &amp; Trade</td><td class="price-td">PKR 55,000 – 80,000</td></tr>
+    </tbody></table>
+    <div class="avoid-note">✕ Avoid Karachi Clifton / PECHS — most digitized in Pakistan, highly competitive local freelancer market</div>
+    <div class="insight-box"><div class="insight-title">📊 Market Insight</div><div class="insight-text">Pakistan has 5.2M SMEs with 82% lacking a website — approximately 4.26M businesses. SMEDA (Small and Medium Enterprise Development Authority) has a government digitization program actively encouraging SME web adoption. Sialkot is the single most compelling niche: exporters with global clients (Adidas, Nike) who have no website but are already global businesses — your close rate here should be extremely high because you're not convincing them websites matter (they know), you're just offering the price.</div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════ LATIN AMERICA ═══════════════════ -->
+<div id="latam" class="continent-anchor">
+  <div class="continent-banner">
+    <span class="continent-name">🌎 LATIN AMERICA</span>
+    <span class="continent-count">Top 5 Countries · Portuguese &amp; Spanish Markets</span>
+  </div>
+</div>
+
+<!-- BRAZIL -->
+<div class="country-wrap">
+  <div class="country-header">
+    <div class="country-flag-name">
+      <div class="country-flag">🇧🇷</div>
+      <div><div class="country-title">Brazil</div><div class="country-sub">Portuguese · South America</div></div>
+    </div>
+    <div class="country-price-block">
+      <div class="price-big">BRL 1,500 – 3,500</div>
+      <div class="price-usd">≈ $290–$680</div>
+      <div class="confidence-row">
+        <div class="conf-block"><div class="stat-label">Data Confidence</div><div class="conf-val conf-HIGH">HIGH</div></div>
+        <div class="conf-block" style="text-align:left"><div class="stat-label">Payments</div><div class="payments-val">Wise Payoneer PIX (via local partner)</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="stats-row">
+    <div class="stat-cell"><div class="stat-val">$17,800</div><div class="stat-lbl">GDP per capita PPP</div><div class="stat-src">World Bank 2023</div></div>
+    <div class="stat-cell"><div class="stat-val">~17M</div><div class="stat-lbl">Active SMEs</div><div class="stat-src">SEBRAE 2023</div></div>
+    <div class="stat-cell"><div class="stat-val">70%</div><div class="stat-lbl">SMEs with no website</div><div class="stat-src">SEBRAE Digital Adoption Survey 2023</div></div>
+  </div>
+  <button class="country-toggle" onclick="toggleCountry(this)">▼ view data breakdown <span class="toggle-icon">▼</span></button>
+  <div class="country-body">
+    <div class="section-label">SUB-REGIONS &amp; INDUSTRY PRICING</div>
+    <div class="city-header"><div class="city-badge">NORTHEAST BRAZIL — CHEAPEST + EASIEST ENTRY</div><div class="city-name">Fortaleza (Ceara)</div></div>
+    <div class="city-desc">~2.7M residents · Capital of Brazil's northeast coast · Tourism and food economy booming since 2020 · Most offline large city in Brazil · Almost no international freelancers targeting the northeast · SEBRAE local: 78% of Fortaleza SMEs have no digital presence</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Tourism &amp; Beach Resorts</td><td class="price-td">BRL 2,000 – 3,500</td></tr>
+      <tr><td>Restaurants &amp; Food</td><td class="price-td">BRL 1,500 – 2,800</td></tr>
+      <tr><td>Beauty Salons</td><td class="price-td">BRL 1,400 – 2,500</td></tr>
+      <tr><td>Retail &amp; Fashion</td><td class="price-td">BRL 1,500 – 2,700</td></tr>
+    </tbody></table>
+    <div class="city-spacer"></div>
+    <div class="city-header"><div class="city-badge">NORTHEAST CULTURAL HUB — HERITAGE + TOURISM</div><div class="city-name">Recife / Olinda</div></div>
+    <div class="city-desc">~1.7M residents · Famous carnival and heritage tourism city · Hundreds of pousadas, tour operators, and restaurants — almost all without websites · Business owners are WhatsApp-native and very receptive to direct outreach</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Pousadas &amp; Guesthouses</td><td class="price-td">BRL 2,000 – 3,500</td></tr>
+      <tr><td>Restaurants &amp; Food</td><td class="price-td">BRL 1,500 – 2,800</td></tr>
+      <tr><td>Event &amp; Party Services</td><td class="price-td">BRL 1,500 – 2,700</td></tr>
+      <tr><td>Wellness &amp; Spas</td><td class="price-td">BRL 1,600 – 2,700</td></tr>
+    </tbody></table>
+    <div class="city-spacer"></div>
+    <div class="city-header"><div class="city-badge">AMAZON GATEWAY — TOURISM + INDUSTRY</div><div class="city-name">Manaus (Amazonas)</div></div>
+    <div class="city-desc">~2.2M residents · Amazon's biggest city · Ecotourism is exploding — jungle lodges, river tour operators, wildlife guides — almost all with no website · Free Trade Zone (Zona Franca) drives industrial SMEs too · Very few local web agencies</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Ecotourism &amp; Jungle Lodges</td><td class="price-td">BRL 2,000 – 3,500</td></tr>
+      <tr><td>River Tour Operators</td><td class="price-td">BRL 2,000 – 3,500</td></tr>
+      <tr><td>Industrial / Zona Franca</td><td class="price-td">BRL 2,200 – 3,500</td></tr>
+    </tbody></table>
+    <div class="city-spacer"></div>
+    <div class="city-header"><div class="city-badge">AFRO-BRAZIL CULTURAL HUB — MASSIVE HOSPITALITY GAP</div><div class="city-name">Salvador (Bahia)</div></div>
+    <div class="city-desc">~2.9M residents · Brazil's most culturally distinct city · Afro-Brazilian festivals draw international tourism · Hundreds of small hotels, tour experiences, seafood restaurants — almost all without websites · City tourism growing 15% YoY</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Tourism &amp; Cultural Experiences</td><td class="price-td">BRL 2,200 – 3,500</td></tr>
+      <tr><td>Restaurants &amp; Food</td><td class="price-td">BRL 1,500 – 2,700</td></tr>
+      <tr><td>Event Services</td><td class="price-td">BRL 1,600 – 2,800</td></tr>
+    </tbody></table>
+    <div class="avoid-note">✕ Avoid São Paulo Jardins / Rio de Janeiro Ipanema — Brazil's most digitized areas, competitive local freelancer market</div>
+    <div class="insight-box"><div class="insight-title">📊 Market Insight</div><div class="insight-text">SEBRAE 2023 reports 17M SMEs with 70% lacking a website — approximately 11.9M businesses. Brazil is Portuguese-only for cold outreach. AI translation to Brazilian Portuguese is essential and works extremely well. Fortaleza and northeast Brazil are your best entry markets: lowest agency competition, highest untapped density. PIX (Brazil's instant payment system) handles BRL transfers, but you'll need a Brazilian partner account or Wise for receiving payments abroad.</div></div>
+  </div>
+</div>
+
+<!-- MEXICO -->
+<div class="country-wrap">
+  <div class="country-header">
+    <div class="country-flag-name">
+      <div class="country-flag">🇲🇽</div>
+      <div><div class="country-title">Mexico</div><div class="country-sub">Spanish · North/Central America</div></div>
+    </div>
+    <div class="country-price-block">
+      <div class="price-big">MXN 7,000 – 16,000</div>
+      <div class="price-usd">≈ $410–$940</div>
+      <div class="confidence-row">
+        <div class="conf-block"><div class="stat-label">Data Confidence</div><div class="conf-val conf-HIGH">HIGH</div></div>
+        <div class="conf-block" style="text-align:left"><div class="stat-label">Payments</div><div class="payments-val">Wise Payoneer</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="stats-row">
+    <div class="stat-cell"><div class="stat-val">$22,100</div><div class="stat-lbl">GDP per capita PPP</div><div class="stat-src">World Bank 2023</div></div>
+    <div class="stat-cell"><div class="stat-val">~5.3M</div><div class="stat-lbl">Active SMEs</div><div class="stat-src">INEGI Mexico 2023</div></div>
+    <div class="stat-cell"><div class="stat-val">65%</div><div class="stat-lbl">SMEs with no website</div><div class="stat-src">INEGI e-Commerce Survey 2023</div></div>
+  </div>
+  <button class="country-toggle" onclick="toggleCountry(this)">▼ view data breakdown <span class="toggle-icon">▼</span></button>
+  <div class="country-body">
+    <div class="section-label">SUB-REGIONS &amp; INDUSTRY PRICING</div>
+    <div class="city-header"><div class="city-badge">MEXICO'S 2ND CITY — HIGH-INCOME, PARTIALLY OFFLINE</div><div class="city-name">Guadalajara (Outside Centro)</div></div>
+    <div class="city-desc">~5M metro residents · Mexico's Silicon Valley + tequila/agave heartland · Suburbs like Zapopan, Tlaquepaque, and Tonala have craft, food, and artisan businesses all offline · Tlaquepaque alone has hundreds of furniture and craft exporters with no website</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Craft &amp; Furniture Exporters</td><td class="price-td">MXN 10,000 – 16,000</td></tr>
+      <tr><td>Restaurants &amp; Taquerias</td><td class="price-td">MXN 7,000 – 12,000</td></tr>
+      <tr><td>Agave / Tequila Producers</td><td class="price-td">MXN 10,000 – 16,000</td></tr>
+      <tr><td>Beauty Salons &amp; Spas</td><td class="price-td">MXN 7,000 – 11,000</td></tr>
+    </tbody></table>
+    <div class="city-spacer"></div>
+    <div class="city-header"><div class="city-badge">MEXICO'S RICHEST CITY — B2B GOLDMINE</div><div class="city-name">Monterrey (Industrial Suburbs)</div></div>
+    <div class="city-desc">~5.3M metro residents · Mexico's industrial capital · Highest income city in Mexico · Apodaca, Escobedo, Santa Catarina have massive manufacturing clusters — many with no website · B2B industrial SMEs that export to USA and Canada but have never invested in a digital presence</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Manufacturing &amp; Industrial</td><td class="price-td">MXN 12,000 – 16,000</td></tr>
+      <tr><td>Technical Services</td><td class="price-td">MXN 10,000 – 15,000</td></tr>
+      <tr><td>Restaurants &amp; Food</td><td class="price-td">MXN 8,000 – 13,000</td></tr>
+      <tr><td>Clinics &amp; Medical</td><td class="price-td">MXN 10,000 – 15,000</td></tr>
+    </tbody></table>
+    <div class="city-spacer"></div>
+    <div class="city-header"><div class="city-badge">SAFEST CITY IN MEXICO — COLONIAL TOURISM BOOM</div><div class="city-name">Merida (Yucatan)</div></div>
+    <div class="city-desc">~1.3M residents · Mexico's safest large city · Colonial heritage tourism + expat real estate boom · Boutique hotels, restaurants, and artisan businesses booming — almost all without websites · Growing US/Canadian expat retirement community creates demand for bilingual (Spanish/English) websites</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Boutique Hotels &amp; Casas</td><td class="price-td">MXN 10,000 – 16,000</td></tr>
+      <tr><td>Restaurants &amp; Cafes</td><td class="price-td">MXN 7,000 – 13,000</td></tr>
+      <tr><td>Artisan &amp; Craft Shops</td><td class="price-td">MXN 7,000 – 12,000</td></tr>
+      <tr><td>Real Estate &amp; Property</td><td class="price-td">MXN 10,000 – 15,000</td></tr>
+    </tbody></table>
+    <div class="city-spacer"></div>
+    <div class="city-header"><div class="city-badge">LEATHER CAPITAL — MASSIVE EXPORT GAP</div><div class="city-name">Leon (Guanajuato)</div></div>
+    <div class="city-desc">~1.6M residents · Mexico's shoe and leather capital · 40,000+ leather goods manufacturers and vendors — almost all offline · Shoe exporters sell to the USA and EU but have no product website · Very high B2B motivation once you explain SEO and catalog value</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Shoe &amp; Leather Manufacturers</td><td class="price-td">MXN 10,000 – 16,000</td></tr>
+      <tr><td>Leather Goods Vendors</td><td class="price-td">MXN 9,000 – 14,000</td></tr>
+      <tr><td>Restaurants &amp; Food</td><td class="price-td">MXN 7,000 – 11,000</td></tr>
+    </tbody></table>
+    <div class="avoid-note">✕ Avoid CDMX Roma/Condesa — Mexico City's digital hub, agencies charge MXN 25,000–80,000, slow decision cycle</div>
+    <div class="insight-box"><div class="insight-title">📊 Market Insight</div><div class="insight-text">INEGI 2023 puts Mexico at 5.3M SMEs with 65% lacking a professional website — approximately 3.4M businesses. Monterrey and Leon are B2B goldmines: exporters who deal with US buyers daily but have no website are embarrassed about it — you're solving a credibility problem, not selling a luxury. Spanish outreach is mandatory (English open rates are very low outside Monterrey). Merida's growing expat market makes it uniquely receptive to bilingual offers at a premium.</div></div>
+  </div>
+</div>
+
+<!-- COLOMBIA -->
+<div class="country-wrap">
+  <div class="country-header">
+    <div class="country-flag-name">
+      <div class="country-flag">🇨🇴</div>
+      <div><div class="country-title">Colombia</div><div class="country-sub">Spanish · South America</div></div>
+    </div>
+    <div class="country-price-block">
+      <div class="price-big">COP 1,800,000 – 3,600,000</div>
+      <div class="price-usd">≈ $440–$880</div>
+      <div class="confidence-row">
+        <div class="conf-block"><div class="stat-label">Data Confidence</div><div class="conf-val conf-MED-HIGH">MED-HIGH</div></div>
+        <div class="conf-block" style="text-align:left"><div class="stat-label">Payments</div><div class="payments-val">Wise Payoneer</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="stats-row">
+    <div class="stat-cell"><div class="stat-val">$17,100</div><div class="stat-lbl">GDP per capita PPP</div><div class="stat-src">World Bank 2023</div></div>
+    <div class="stat-cell"><div class="stat-val">~2.5M</div><div class="stat-lbl">Active SMEs</div><div class="stat-src">DANE Colombia 2023</div></div>
+    <div class="stat-cell"><div class="stat-val">72%</div><div class="stat-lbl">SMEs with no website</div><div class="stat-src">MinTIC Colombia 2023</div></div>
+  </div>
+  <button class="country-toggle" onclick="toggleCountry(this)">▼ view data breakdown <span class="toggle-icon">▼</span></button>
+  <div class="country-body">
+    <div class="section-label">SUB-REGIONS &amp; INDUSTRY PRICING</div>
+    <div class="city-header"><div class="city-badge">HIGHEST ENTREPRENEUR DENSITY IN COLOMBIA</div><div class="city-name">Medellin (Laureles / Belen / Envigado)</div></div>
+    <div class="city-desc">~4M metro residents · Colombia's most entrepreneurial city · Massive cafe culture, fashion industry, and wellness sector · Laureles and Envigado have hundreds of cafes, boutiques, and salons — most on Instagram only · Medellin is also Colombia's digital nomad hub — clients understand website value better than any other Colombian city</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Cafes &amp; Coffee Concepts</td><td class="price-td">COP 1,800,000 – 3,200,000</td></tr>
+      <tr><td>Beauty &amp; Wellness Studios</td><td class="price-td">COP 1,800,000 – 3,000,000</td></tr>
+      <tr><td>Fashion Boutiques</td><td class="price-td">COP 1,800,000 – 3,200,000</td></tr>
+      <tr><td>Gyms &amp; Fitness</td><td class="price-td">COP 2,000,000 – 3,200,000</td></tr>
+      <tr><td>Medical &amp; Dental Tourism</td><td class="price-td">COP 2,500,000 – 3,600,000</td></tr>
+    </tbody></table>
+    <div class="city-spacer"></div>
+    <div class="city-header"><div class="city-badge">SALSA CAPITAL — CULTURE + FOOD + EVENTS</div><div class="city-name">Cali (Valle del Cauca)</div></div>
+    <div class="city-desc">~2.9M residents · Colombia's 3rd city · Food, salsa tourism, and events are the economy · Restaurants and dance schools are everywhere — almost all without websites · Sugar cane and agriculture export businesses in the surrounding Valle region have zero digital presence</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Restaurants &amp; Food</td><td class="price-td">COP 1,800,000 – 3,000,000</td></tr>
+      <tr><td>Dance Schools &amp; Cultural</td><td class="price-td">COP 1,800,000 – 3,000,000</td></tr>
+      <tr><td>Agriculture &amp; Sugar Export</td><td class="price-td">COP 2,200,000 – 3,500,000</td></tr>
+      <tr><td>Event Services</td><td class="price-td">COP 1,800,000 – 3,000,000</td></tr>
+    </tbody></table>
+    <div class="city-spacer"></div>
+    <div class="city-header"><div class="city-badge">CARIBBEAN PORT CITY — COMMERCE + IMPORTS</div><div class="city-name">Barranquilla</div></div>
+    <div class="city-desc">~2.2M residents · Colombia's main Caribbean port · Import/export companies, food industry, and Carnival tourism · Business culture is deal-oriented and faster-moving than Bogota — shorter sales cycles · Very low local agency competition</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Import/Export Companies</td><td class="price-td">COP 2,500,000 – 3,600,000</td></tr>
+      <tr><td>Restaurants &amp; Food</td><td class="price-td">COP 1,800,000 – 2,800,000</td></tr>
+      <tr><td>Hotels &amp; Tourism</td><td class="price-td">COP 2,000,000 – 3,200,000</td></tr>
+    </tbody></table>
+    <div class="avoid-note">✕ Avoid Bogota Chapinero / Zona Rosa — Colombia's most digitized commercial area, agencies charge COP 5M–15M+</div>
+    <div class="insight-box"><div class="insight-title">📊 Market Insight</div><div class="insight-text">MinTIC 2023 data shows 72% of 2.5M SMEs lack a website — approximately 1.8M businesses. Medellin is your best single city in all of Latin America: the cultural transformation, digital nomad economy, and aesthetic-conscious entrepreneurs mean website value is already understood. Colombia is also the world's #1 medical tourism destination for dental work — Medellin clinics are inundated with international patients but have no website in English. Colombia's COP is stable (~4,100/$1).</div></div>
+  </div>
+</div>
+
+<!-- ARGENTINA -->
+<div class="country-wrap">
+  <div class="country-header">
+    <div class="country-flag-name">
+      <div class="country-flag">🇦🇷</div>
+      <div><div class="country-title">Argentina</div><div class="country-sub">Spanish · South America</div></div>
+    </div>
+    <div class="country-price-block">
+      <div class="price-big">$300 – $650 USD</div>
+      <div class="price-usd">Dollar-denominated recommended</div>
+      <div class="confidence-row">
+        <div class="conf-block"><div class="stat-label">Data Confidence</div><div class="conf-val conf-MEDIUM">MEDIUM</div></div>
+        <div class="conf-block" style="text-align:left"><div class="stat-label">Payments</div><div class="payments-val">Wise Payoneer (USD preferred)</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="stats-row">
+    <div class="stat-cell"><div class="stat-val">$23,100</div><div class="stat-lbl">GDP per capita PPP</div><div class="stat-src">World Bank 2023</div></div>
+    <div class="stat-cell"><div class="stat-val">~600,000</div><div class="stat-lbl">Active SMEs (formal)</div><div class="stat-src">CAME Argentina 2023</div></div>
+    <div class="stat-cell"><div class="stat-val">68%</div><div class="stat-lbl">SMEs with no website</div><div class="stat-src">CAME Digital Survey 2023</div></div>
+  </div>
+  <button class="country-toggle" onclick="toggleCountry(this)">▼ view data breakdown <span class="toggle-icon">▼</span></button>
+  <div class="country-body">
+    <div class="section-label">SUB-REGIONS &amp; INDUSTRY PRICING</div>
+    <div class="city-header"><div class="city-badge">2ND LARGEST CITY — UNIVERSITY + INDUSTRY CAPITAL</div><div class="city-name">Cordoba</div></div>
+    <div class="city-desc">~1.6M residents · Argentina's 2nd city · Heavy automotive manufacturing (Renault, Volkswagen, FIAT) and university-driven services · Massive cafe and restaurant culture · Far less agency competition than Buenos Aires · Strong entrepreneurial middle class</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Restaurants &amp; Cafes</td><td class="price-td">$300 – $520 USD</td></tr>
+      <tr><td>Auto Parts &amp; Industrial</td><td class="price-td">$400 – $650 USD</td></tr>
+      <tr><td>Professional Services</td><td class="price-td">$380 – $600 USD</td></tr>
+      <tr><td>Beauty &amp; Wellness</td><td class="price-td">$280 – $480 USD</td></tr>
+    </tbody></table>
+    <div class="city-spacer"></div>
+    <div class="city-header"><div class="city-badge">WINE CAPITAL — TOURISM + AGRI-EXPORT</div><div class="city-name">Mendoza</div></div>
+    <div class="city-desc">~1.1M residents · Argentina's Malbec wine heartland · Hundreds of wineries and estancias (rural lodges) — some world-famous but with no website · Wine tourism growing 23% YoY · Highest English proficiency in Argentina outside Buenos Aires</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Wineries &amp; Wine Tourism</td><td class="price-td">$450 – $650 USD</td></tr>
+      <tr><td>Estancias &amp; Rural Tourism</td><td class="price-td">$420 – $630 USD</td></tr>
+      <tr><td>Restaurants &amp; Food</td><td class="price-td">$300 – $500 USD</td></tr>
+    </tbody></table>
+    <div class="city-spacer"></div>
+    <div class="city-header"><div class="city-badge">ARGENTINA'S BEACH CAPITAL — SEASONAL BOOM</div><div class="city-name">Mar del Plata</div></div>
+    <div class="city-desc">~650,000 residents · Argentina's most visited beach city · 8M+ tourists visit every summer (December-March) · Hotels, restaurants, and tour operators explode every season with zero web presence · Seasonal urgency = very fast close rate October-November</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Hotels &amp; Guesthouses</td><td class="price-td">$380 – $600 USD</td></tr>
+      <tr><td>Restaurants &amp; Bars</td><td class="price-td">$300 – $500 USD</td></tr>
+      <tr><td>Entertainment &amp; Events</td><td class="price-td">$320 – $520 USD</td></tr>
+    </tbody></table>
+    <div class="avoid-note">✕ Avoid Buenos Aires Palermo / San Telmo — most competitive market in Argentina, slow decision cycle</div>
+    <div class="insight-box"><div class="insight-title">📊 Market Insight</div><div class="insight-text">Argentina's economic instability actually creates opportunity — peso-denominated pricing is unstable, so pricing in USD is standard and welcomed by clients who also think in dollars. CAME 2023 confirms 68% of ~600,000 formal SMEs lack a website (~408,000 businesses). Mendoza wine tourism is your single best niche here: wineries have international customers, earn USD from wine tourism and exports, and are actively embarrassed by their digital presence. Payoneer USD deposits work cleanly.</div></div>
+  </div>
+</div>
+
+<!-- CHILE -->
+<div class="country-wrap">
+  <div class="country-header">
+    <div class="country-flag-name">
+      <div class="country-flag">🇨🇱</div>
+      <div><div class="country-title">Chile</div><div class="country-sub">Spanish · South America</div></div>
+    </div>
+    <div class="country-price-block">
+      <div class="price-big">CLP 260,000 – 550,000</div>
+      <div class="price-usd">≈ $285–$600</div>
+      <div class="confidence-row">
+        <div class="conf-block"><div class="stat-label">Data Confidence</div><div class="conf-val conf-MED-HIGH">MED-HIGH</div></div>
+        <div class="conf-block" style="text-align:left"><div class="stat-label">Payments</div><div class="payments-val">Wise Payoneer</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="stats-row">
+    <div class="stat-cell"><div class="stat-val">$28,200</div><div class="stat-lbl">GDP per capita PPP — highest in LatAm</div><div class="stat-src">World Bank 2023</div></div>
+    <div class="stat-cell"><div class="stat-val">~1.1M</div><div class="stat-lbl">Active SMEs</div><div class="stat-src">SII Chile / SERCOTEC 2023</div></div>
+    <div class="stat-cell"><div class="stat-val">61%</div><div class="stat-lbl">SMEs with no website</div><div class="stat-src">SII Digital Adoption Survey 2023</div></div>
+  </div>
+  <button class="country-toggle" onclick="toggleCountry(this)">▼ view data breakdown <span class="toggle-icon">▼</span></button>
+  <div class="country-body">
+    <div class="section-label">SUB-REGIONS &amp; INDUSTRY PRICING</div>
+    <div class="city-header"><div class="city-badge">2ND LARGEST CITY — VERY OFFLINE VS INCOME</div><div class="city-name">Concepcion (Biobio)</div></div>
+    <div class="city-desc">~960,000 metro residents · Chile's 2nd city · Heavy forestry, steel, and university economy · Higher incomes than national average but very low web adoption · Far less agency competition than Santiago</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Forestry &amp; Wood Products</td><td class="price-td">CLP 380,000 – 550,000</td></tr>
+      <tr><td>Restaurants &amp; Cafes</td><td class="price-td">CLP 260,000 – 440,000</td></tr>
+      <tr><td>Clinics &amp; Medical</td><td class="price-td">CLP 320,000 – 520,000</td></tr>
+      <tr><td>Professional Services</td><td class="price-td">CLP 340,000 – 520,000</td></tr>
+    </tbody></table>
+    <div class="city-spacer"></div>
+    <div class="city-header"><div class="city-badge">CHILE'S RICHEST PER-CAPITA REGION — MINING SERVICES B2B</div><div class="city-name">Antofagasta (Mining North)</div></div>
+    <div class="city-desc">~400,000 residents · World's largest copper mining region · Mining supply and services companies earn enormous revenues but have the worst web presence in Chile · B2B pitch: "Your $10M contract clients are Googling your company" — highest B2B close rate in LatAm</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Mining Supply &amp; Services</td><td class="price-td">CLP 430,000 – 550,000</td></tr>
+      <tr><td>Technical &amp; Maintenance</td><td class="price-td">CLP 400,000 – 540,000</td></tr>
+      <tr><td>Restaurants &amp; Hotels</td><td class="price-td">CLP 280,000 – 440,000</td></tr>
+    </tbody></table>
+    <div class="city-spacer"></div>
+    <div class="city-header"><div class="city-badge">MAPUCHE HEARTLAND — AGRI + INDIGENOUS TOURISM BOOM</div><div class="city-name">Temuco (Araucania)</div></div>
+    <div class="city-desc">~350,000 residents · Gateway to Chile's lake and volcano tourism · Mapuche-owned agri and tourism businesses are booming but 100% offline · Ecotourism and cultural tourism growing 20% YoY · Local agencies charge CLP 700,000–1,200,000+ — you undercut significantly</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Ecotourism &amp; Nature Tourism</td><td class="price-td">CLP 360,000 – 540,000</td></tr>
+      <tr><td>Agriculture &amp; Food Producers</td><td class="price-td">CLP 300,000 – 480,000</td></tr>
+      <tr><td>Lodges &amp; Guesthouses</td><td class="price-td">CLP 360,000 – 540,000</td></tr>
+    </tbody></table>
+    <div class="avoid-note">✕ Avoid Santiago Las Condes / Providencia — Chile's most digitized area, agencies charge CLP 800,000–2,000,000+</div>
+    <div class="insight-box"><div class="insight-title">📊 Market Insight</div><div class="insight-text">Chile is Latin America's highest-income country by PPP at $28,200 (World Bank 2023) and your premium-pricing opportunity on the continent. SII reports 61% of 1.1M SMEs have no website — approximately 671,000 businesses. Chile's payment infrastructure is clean: Wise lands without friction, no currency controls. Antofagasta mining services is the highest single project value in LatAm — a mining supply company website warrants CLP 500,000+ because the client's average contract is in the millions.</div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════ OCEANIA ═══════════════════ -->
+<div id="oceania" class="continent-anchor">
+  <div class="continent-banner">
+    <span class="continent-name">🌏 OCEANIA</span>
+    <span class="continent-count">Australia &amp; New Zealand · English · High-Income</span>
+  </div>
+</div>
+
+<!-- AUSTRALIA -->
+<div class="country-wrap">
+  <div class="country-header">
+    <div class="country-flag-name">
+      <div class="country-flag">🇦🇺</div>
+      <div><div class="country-title">Australia</div><div class="country-sub">English · Oceania</div></div>
+    </div>
+    <div class="country-price-block">
+      <div class="price-big">AUD 900 – 2,200</div>
+      <div class="price-usd">≈ $590–$1,440</div>
+      <div class="confidence-row">
+        <div class="conf-block"><div class="stat-label">Data Confidence</div><div class="conf-val conf-HIGH">HIGH</div></div>
+        <div class="conf-block" style="text-align:left"><div class="stat-label">Payments</div><div class="payments-val">Wise Stripe Payoneer</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="stats-row">
+    <div class="stat-cell"><div class="stat-val">$62,400</div><div class="stat-lbl">GDP per capita PPP</div><div class="stat-src">World Bank 2023</div></div>
+    <div class="stat-cell"><div class="stat-val">~2.5M</div><div class="stat-lbl">Active SMEs</div><div class="stat-src">ABS Australia 2023</div></div>
+    <div class="stat-cell"><div class="stat-val">40%</div><div class="stat-lbl">SMEs with no website</div><div class="stat-src">ASBAS Digital Solutions Survey 2023</div></div>
+  </div>
+  <button class="country-toggle" onclick="toggleCountry(this)">▼ view data breakdown <span class="toggle-icon">▼</span></button>
+  <div class="country-body">
+    <div class="section-label">SUB-REGIONS &amp; INDUSTRY PRICING</div>
+    <div class="city-header"><div class="city-badge">TROPICAL NORTH — TOURISM + AGRICULTURE OFFLINE</div><div class="city-name">Regional Queensland (Cairns / Townsville / Toowoomba)</div></div>
+    <div class="city-desc">Cairns: ~160,000 · Townsville: ~200,000 · Toowoomba: ~175,000 · Three major regional cities with booming tourism and agricultural economies but far lower digital adoption than Brisbane or Sydney · Cairns is the Great Barrier Reef gateway — hundreds of dive operators, tour guides, and guesthouses with outdated or no websites · Local agencies charge AUD 2,500–6,000 — your AUD 1,200 rate is a genuine 50%+ saving</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Dive &amp; Reef Tour Operators</td><td class="price-td">AUD 1,200 – 2,000</td></tr>
+      <tr><td>Hotels &amp; Guesthouses</td><td class="price-td">AUD 1,100 – 1,900</td></tr>
+      <tr><td>Agriculture &amp; Farm Supply</td><td class="price-td">AUD 1,100 – 1,800</td></tr>
+      <tr><td>Restaurants &amp; Cafes</td><td class="price-td">AUD 900 – 1,600</td></tr>
+    </tbody></table>
+    <div class="city-spacer"></div>
+    <div class="city-header"><div class="city-badge">WINE + INDUSTRY BELT — HIGH INCOME, PARTIALLY OFFLINE</div><div class="city-name">Regional NSW (Newcastle / Hunter Valley / Central Coast)</div></div>
+    <div class="city-desc">Newcastle metro: ~550,000 · Hunter Valley: ~75,000 · Australia's premier wine region directly adjacent to the 5M-person Sydney market · Dozens of boutique wineries, cellar doors, and guesthouses essentially invisible online · Central Coast: 350,000 residents with very high small business density and low web adoption</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Wineries &amp; Cellar Doors</td><td class="price-td">AUD 1,400 – 2,200</td></tr>
+      <tr><td>Boutique Hotels &amp; B&amp;Bs</td><td class="price-td">AUD 1,200 – 2,000</td></tr>
+      <tr><td>Restaurants &amp; Food</td><td class="price-td">AUD 900 – 1,600</td></tr>
+      <tr><td>Trade Services (Plumber/Electrician)</td><td class="price-td">AUD 1,100 – 1,800</td></tr>
+    </tbody></table>
+    <div class="city-spacer"></div>
+    <div class="city-header"><div class="city-badge">AUSTRALIA'S MOST ISOLATED CITY — LOWEST COMPETITION</div><div class="city-name">Darwin (Northern Territory)</div></div>
+    <div class="city-desc">~150,000 residents · Smallest Australian capital city · Mining, defense, and tourism economy · Extremely low local agency competition — fewer than 10 active web agencies in the entire NT · Tourism businesses for Kakadu and Litchfield have no digital presence</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Tourism &amp; National Parks</td><td class="price-td">AUD 1,200 – 2,000</td></tr>
+      <tr><td>Mining Services &amp; Supply</td><td class="price-td">AUD 1,400 – 2,200</td></tr>
+      <tr><td>Restaurants &amp; Bars</td><td class="price-td">AUD 900 – 1,500</td></tr>
+      <tr><td>Medical &amp; Dental</td><td class="price-td">AUD 1,200 – 1,900</td></tr>
+    </tbody></table>
+    <div class="city-spacer"></div>
+    <div class="city-header"><div class="city-badge">FOOD + ARTS ISLAND — BOUTIQUE ECONOMY WITH NO DIGITAL LAYER</div><div class="city-name">Tasmania (Hobart / Launceston)</div></div>
+    <div class="city-desc">Hobart: ~240,000 · Launceston: ~110,000 · Tasmania is Australia's premium food and wine destination · Truffles, whisky, salmon farming, and cheese producers — most without a professional website · MONA museum drives art tourism but surrounding hospitality has no digital presence · Highest food-premium pricing in Australia</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Artisan Food &amp; Produce</td><td class="price-td">AUD 1,400 – 2,200</td></tr>
+      <tr><td>Wineries &amp; Whisky Distilleries</td><td class="price-td">AUD 1,400 – 2,200</td></tr>
+      <tr><td>Boutique Hotels &amp; Lodges</td><td class="price-td">AUD 1,300 – 2,000</td></tr>
+      <tr><td>Arts &amp; Cultural Businesses</td><td class="price-td">AUD 1,100 – 1,800</td></tr>
+    </tbody></table>
+    <div class="avoid-note">✕ Avoid Sydney CBD / Melbourne Fitzroy — most competitive markets in Australia, local agencies charge AUD 3,000–8,000+ and clients are price-aware</div>
+    <div class="insight-box"><div class="insight-title">📊 Market Insight</div><div class="insight-text">ABS 2023 data shows approximately 1M Australian SMEs with no professional website. English removes all language friction. Australia's ASBAS government program actively subsidizes up to AUD 1,200 worth of digital services for qualifying SMEs — meaning you're effectively free to some clients. AUD is strong (~0.66 USD per AUD): AUD 1,600 = approximately $1,055 USD per project. Cairns dive and reef operators are one of the most compelling cold outreach niches on the continent: they're losing international bookings every day they're not on Google.</div></div>
+  </div>
+</div>
+
+<!-- NEW ZEALAND -->
+<div class="country-wrap">
+  <div class="country-header">
+    <div class="country-flag-name">
+      <div class="country-flag">🇳🇿</div>
+      <div><div class="country-title">New Zealand</div><div class="country-sub">English · Oceania</div></div>
+    </div>
+    <div class="country-price-block">
+      <div class="price-big">NZD 1,100 – 2,300</div>
+      <div class="price-usd">≈ $660–$1,380</div>
+      <div class="confidence-row">
+        <div class="conf-block"><div class="stat-label">Data Confidence</div><div class="conf-val conf-MED-HIGH">MED-HIGH</div></div>
+        <div class="conf-block" style="text-align:left"><div class="stat-label">Payments</div><div class="payments-val">Wise Stripe Payoneer</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="stats-row">
+    <div class="stat-cell"><div class="stat-val">$50,400</div><div class="stat-lbl">GDP per capita PPP</div><div class="stat-src">World Bank 2023</div></div>
+    <div class="stat-cell"><div class="stat-val">~570,000</div><div class="stat-lbl">Active SMEs</div><div class="stat-src">Stats NZ 2023</div></div>
+    <div class="stat-cell"><div class="stat-val">44%</div><div class="stat-lbl">SMEs with no website</div><div class="stat-src">MBIE Digital Adoption Survey 2022</div></div>
+  </div>
+  <button class="country-toggle" onclick="toggleCountry(this)">▼ view data breakdown <span class="toggle-icon">▼</span></button>
+  <div class="country-body">
+    <div class="section-label">SUB-REGIONS &amp; INDUSTRY PRICING</div>
+    <div class="city-header"><div class="city-badge">GEOTHERMAL TOURISM HUB — HIGHEST MOTIVATION IN NZ</div><div class="city-name">Rotorua</div></div>
+    <div class="city-desc">~60,000 residents · NZ's #1 domestic tourism city · Maori cultural experiences, geothermal parks, and adventure tourism · Hundreds of small operators — Maori hangi restaurants, guided tours, thermal bath operators — without websites · International tourists book via Google, so absence of a website directly = lost revenue</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Geothermal &amp; Adventure Tourism</td><td class="price-td">NZD 1,400 – 2,300</td></tr>
+      <tr><td>Maori Cultural Experiences</td><td class="price-td">NZD 1,400 – 2,200</td></tr>
+      <tr><td>Hotels &amp; Guesthouses</td><td class="price-td">NZD 1,200 – 2,000</td></tr>
+      <tr><td>Restaurants &amp; Cafes</td><td class="price-td">NZD 1,100 – 1,700</td></tr>
+    </tbody></table>
+    <div class="city-spacer"></div>
+    <div class="city-header"><div class="city-badge">NZ'S FASTEST GROWING CITY — SME BOOM WITHOUT DIGITAL</div><div class="city-name">Tauranga (Bay of Plenty)</div></div>
+    <div class="city-desc">~160,000 residents · NZ's fastest growing city 2020-2024 · Port, kiwifruit export, and lifestyle economy · Explosion of new retail, cafe, and health businesses — most launched with Facebook only · Fewer web agencies than Auckland/Wellington</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Kiwifruit &amp; Food Exporters</td><td class="price-td">NZD 1,500 – 2,300</td></tr>
+      <tr><td>Cafes &amp; Restaurants</td><td class="price-td">NZD 1,100 – 1,800</td></tr>
+      <tr><td>Wellness &amp; Beauty</td><td class="price-td">NZD 1,100 – 1,800</td></tr>
+      <tr><td>Gyms &amp; Fitness</td><td class="price-td">NZD 1,100 – 1,700</td></tr>
+    </tbody></table>
+    <div class="city-spacer"></div>
+    <div class="city-header"><div class="city-badge">WINE + ART DECO — PREMIUM TOURISM OFFLINE</div><div class="city-name">Hawke's Bay / Napier (Wine Region)</div></div>
+    <div class="city-desc">~85,000 residents · NZ's wine capital · Art Deco heritage city + wine estate corridor · Dozens of boutique wineries, luxury lodges, and food producers — most without professional websites · High price tolerance from wine tourism clientele</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Wineries &amp; Cellar Doors</td><td class="price-td">NZD 1,600 – 2,300</td></tr>
+      <tr><td>Luxury Lodges &amp; Guesthouses</td><td class="price-td">NZD 1,500 – 2,300</td></tr>
+      <tr><td>Restaurants &amp; Food</td><td class="price-td">NZD 1,100 – 1,700</td></tr>
+    </tbody></table>
+    <div class="avoid-note">✕ Avoid Auckland CBD / Wellington Te Aro — NZ's most digitized markets, agencies charge NZD 2,500–7,000+</div>
+    <div class="insight-box"><div class="insight-title">📊 Market Insight</div><div class="insight-text">MBIE 2022 reports 44% of ~570k NZ SMEs lack a website — approximately 251,000 businesses. NZD is strong (~0.60 USD per NZD): NZD 1,800 = approximately $1,080 USD. New Zealand is small enough that you can prospect an entire industry (e.g. all Hawke's Bay wineries) from Google Maps in 2 hours. Rotorua is your entry point: Maori cultural tourism businesses are actively losing international bookings every day they lack a website — the pain is immediate, the argument is simple, and decision cycles are fast.</div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════ NORTH AMERICA ═══════════════════ -->
+<div id="north-america" class="continent-anchor">
+  <div class="continent-banner">
+    <span class="continent-name">🌎 NORTH AMERICA</span>
+    <span class="continent-count">Canada &amp; USA Regional · English · High-Income</span>
+  </div>
+</div>
+
+<!-- CANADA -->
+<div class="country-wrap">
+  <div class="country-header">
+    <div class="country-flag-name">
+      <div class="country-flag">🇨🇦</div>
+      <div><div class="country-title">Canada</div><div class="country-sub">English + French · North America</div></div>
+    </div>
+    <div class="country-price-block">
+      <div class="price-big">CAD 900 – 2,000</div>
+      <div class="price-usd">≈ $665–$1,480</div>
+      <div class="confidence-row">
+        <div class="conf-block"><div class="stat-label">Data Confidence</div><div class="conf-val conf-HIGH">HIGH</div></div>
+        <div class="conf-block" style="text-align:left"><div class="stat-label">Payments</div><div class="payments-val">Wise Stripe Payoneer</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="stats-row">
+    <div class="stat-cell"><div class="stat-val">$58,400</div><div class="stat-lbl">GDP per capita PPP</div><div class="stat-src">World Bank 2023</div></div>
+    <div class="stat-cell"><div class="stat-val">~1.19M</div><div class="stat-lbl">Active SMEs</div><div class="stat-src">Statistics Canada 2023</div></div>
+    <div class="stat-cell"><div class="stat-val">43%</div><div class="stat-lbl">SMEs with no website</div><div class="stat-src">BDC Canada Digital Adoption Survey 2023</div></div>
+  </div>
+  <button class="country-toggle" onclick="toggleCountry(this)">▼ view data breakdown <span class="toggle-icon">▼</span></button>
+  <div class="country-body">
+    <div class="section-label">SUB-REGIONS &amp; INDUSTRY PRICING</div>
+    <div class="city-header"><div class="city-badge">CANADA'S MOST OFFLINE REGION — LOWEST AGENCY COMPETITION</div><div class="city-name">Atlantic Canada (Halifax / Moncton / Fredericton)</div></div>
+    <div class="city-desc">Halifax: ~470,000 · Moncton: ~175,000 · Atlantic Canada (NS, NB, NL, PEI) is the most digitally underserved region in Canada · Strong fishing, tourism, and trades economy · Local agencies charge CAD 3,000–8,000 — your CAD 1,200 offer is dramatically cheaper · BDC confirms 51% of Atlantic Canada SMEs have no website</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Seafood &amp; Fishing Industry</td><td class="price-td">CAD 1,200 – 2,000</td></tr>
+      <tr><td>Tourism &amp; B&amp;Bs</td><td class="price-td">CAD 1,100 – 1,900</td></tr>
+      <tr><td>Trades (Plumber/HVAC/Electrician)</td><td class="price-td">CAD 1,100 – 1,800</td></tr>
+      <tr><td>Restaurants &amp; Cafes</td><td class="price-td">CAD 900 – 1,600</td></tr>
+    </tbody></table>
+    <div class="city-spacer"></div>
+    <div class="city-header"><div class="city-badge">PRAIRIE AGRICULTURE — MASSIVE B2B OPPORTUNITY</div><div class="city-name">Saskatchewan (Saskatoon / Regina)</div></div>
+    <div class="city-desc">Saskatoon: ~280,000 · Regina: ~230,000 · Prairie agriculture economy — wheat, canola, potash · Thousands of farm supply, agriculture equipment, and food processing businesses with no website · B2B companies that sell to farms across the prairies and have no way to be found online</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Farm Supply &amp; Agriculture</td><td class="price-td">CAD 1,300 – 2,000</td></tr>
+      <tr><td>Equipment &amp; Industrial</td><td class="price-td">CAD 1,300 – 1,900</td></tr>
+      <tr><td>Restaurants &amp; Local Food</td><td class="price-td">CAD 900 – 1,500</td></tr>
+      <tr><td>Trades &amp; Contractors</td><td class="price-td">CAD 1,100 – 1,700</td></tr>
+    </tbody></table>
+    <div class="city-spacer"></div>
+    <div class="city-header"><div class="city-badge">MINING BELT — HIGH-INCOME B2B, ZERO AGENCIES</div><div class="city-name">Northern Ontario (Sudbury / Thunder Bay)</div></div>
+    <div class="city-desc">Sudbury: ~170,000 · Thunder Bay: ~120,000 · Mining supply and services economy · Sudbury is the nickel capital of the world — dozens of SME mining suppliers with no website · Almost no local web agencies · Very high price tolerance from mining industry income</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Mining Supply &amp; Services</td><td class="price-td">CAD 1,400 – 2,000</td></tr>
+      <tr><td>Trades &amp; Industrial Services</td><td class="price-td">CAD 1,200 – 1,900</td></tr>
+      <tr><td>Restaurants &amp; Food</td><td class="price-td">CAD 900 – 1,500</td></tr>
+    </tbody></table>
+    <div class="city-spacer"></div>
+    <div class="city-header"><div class="city-badge">CANADA'S SMALLEST PROVINCE — TOTAL OUTREACH DOMINATION POSSIBLE</div><div class="city-name">Prince Edward Island (Charlottetown)</div></div>
+    <div class="city-desc">~175,000 total population · Canada's smallest and most rural province · Tourism and potato farming economy · You can Google Maps-research every single restaurant, B&amp;B, and food business on the entire island in a day · Very high tourism motivation with almost no digital presence</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Tourism &amp; B&amp;Bs</td><td class="price-td">CAD 1,100 – 1,900</td></tr>
+      <tr><td>Food Producers &amp; Farms</td><td class="price-td">CAD 1,100 – 1,700</td></tr>
+      <tr><td>Seafood &amp; Restaurants</td><td class="price-td">CAD 900 – 1,600</td></tr>
+    </tbody></table>
+    <div class="avoid-note">✕ Avoid Toronto Downtown / Vancouver Yaletown — Canada's most competitive markets, agencies charge CAD 4,000–15,000+</div>
+    <div class="insight-box"><div class="insight-title">📊 Market Insight</div><div class="insight-text">BDC 2023 reports 43% of 1.19M SMEs lack a website — approximately 512,000 businesses. CAD is strong (~0.74 USD), making each project yield excellent USD value. Canada's government CDAP (Canada Digital Adoption Program) offered $2,400 grants to SMEs for digital services — many owners were primed to buy and still haven't. Atlantic Canada is your single best entry region: highest non-digitization rate in the country, enormous price gap vs local agencies, and fishing/tourism industries with extremely high motivation.</div></div>
+  </div>
+</div>
+
+<!-- USA -->
+<div class="country-wrap">
+  <div class="country-header">
+    <div class="country-flag-name">
+      <div class="country-flag">🇺🇸</div>
+      <div><div class="country-title">USA — Regional Markets Only</div><div class="country-sub">English · North America</div></div>
+    </div>
+    <div class="country-price-block">
+      <div class="price-big">$800 – $2,000 USD</div>
+      <div class="price-usd">Best earnings-per-project globally</div>
+      <div class="confidence-row">
+        <div class="conf-block"><div class="stat-label">Data Confidence</div><div class="conf-val conf-HIGH">HIGH</div></div>
+        <div class="conf-block" style="text-align:left"><div class="stat-label">Payments</div><div class="payments-val">Stripe PayPal Wise</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="stats-row">
+    <div class="stat-cell"><div class="stat-val">$80,300</div><div class="stat-lbl">GDP per capita</div><div class="stat-src">World Bank 2023</div></div>
+    <div class="stat-cell"><div class="stat-val">~33.2M</div><div class="stat-lbl">Active SMEs</div><div class="stat-src">SBA 2023</div></div>
+    <div class="stat-cell"><div class="stat-val">35%</div><div class="stat-lbl">SMEs with no website</div><div class="stat-src">Clutch.co / Visual Objects Survey 2023</div></div>
+  </div>
+  <div class="warning-box">⚠️ WARNING: The USA overall is a highly competitive market — avoid major metros. The opportunity is entirely in rural and small-town America, which is massively underserved.</div>
+  <button class="country-toggle" onclick="toggleCountry(this)">▼ view data breakdown <span class="toggle-icon">▼</span></button>
+  <div class="country-body">
+    <div class="section-label">SUB-REGIONS &amp; INDUSTRY PRICING</div>
+    <div class="city-header"><div class="city-badge">MOST OFFLINE REGION IN THE USA</div><div class="city-name">Mississippi Delta &amp; Rural South (Mississippi / Alabama / Arkansas)</div></div>
+    <div class="city-desc">~8M combined residents across 3 states · The American South has the lowest digital adoption rates in the country · Mississippi has the highest SME non-digitization rate in the USA at ~48% (Clutch 2023) · Restaurants, barbershops, auto shops — almost all without websites · English-only, zero language barrier, very low freelancer competition</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Southern Restaurants &amp; BBQ</td><td class="price-td">$800 – $1,400</td></tr>
+      <tr><td>Auto &amp; Mechanic Shops</td><td class="price-td">$800 – $1,400</td></tr>
+      <tr><td>Barbershops &amp; Beauty</td><td class="price-td">$800 – $1,200</td></tr>
+      <tr><td>Dental &amp; Medical Clinics</td><td class="price-td">$1,000 – $1,700</td></tr>
+    </tbody></table>
+    <div class="city-spacer"></div>
+    <div class="city-header"><div class="city-badge">RURAL AMERICA — ZERO DIGITAL INFRASTRUCTURE</div><div class="city-name">Appalachian Region (West Virginia / Eastern Kentucky / Eastern Tennessee)</div></div>
+    <div class="city-desc">~5M residents · Lowest digital infrastructure in the USA · Tourism growing around hiking, whitewater, and cultural heritage · Many small businesses that have never had a website · SBA reports these counties have 2-3x fewer local web service providers per capita than the national average</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Outdoor Tourism &amp; Cabins</td><td class="price-td">$900 – $1,600</td></tr>
+      <tr><td>Local Diners &amp; Restaurants</td><td class="price-td">$800 – $1,300</td></tr>
+      <tr><td>Trade Services</td><td class="price-td">$800 – $1,300</td></tr>
+    </tbody></table>
+    <div class="city-spacer"></div>
+    <div class="city-header"><div class="city-badge">US-MEXICO BORDER — BILINGUAL ECONOMY, HUGE GAP</div><div class="city-name">Texas — Rio Grande Valley (McAllen / Brownsville / Laredo)</div></div>
+    <div class="city-desc">~1.4M residents in the Valley · Among the lowest-income but highest-SME-density areas of Texas · Strong cross-border trade, food, and retail economy · Many Hispanic-owned family businesses with no web presence · Bilingual (English/Spanish) website offer commands a 20% premium · Very low local freelancer competition</div>
+    <table class="industry-table"><thead><tr><th>Industry / Niche</th><th>Price Range</th></tr></thead><tbody>
+      <tr><td>Mexican Restaurants &amp; Taquerias</td><td class="price-td">$800 – $1,400</td></tr>
+      <tr><td>Cross-Border Retail &amp; Trade</td><td class="price-td">$900 – $1,600</td></tr>
+      <tr><td>Salons &amp; Beauty</td><td class="price-td">$800 – $1,300</td></tr>
+      <tr><td>Auto &amp; Mechanical</td><td class="price-td">$800 – $1,400</td></tr>
+    </tbody></table>
+    <div class="avoid-note">✕ Avoid NYC / Los Angeles / San Francisco / Austin — most competitive markets in the world for web design</div>
+    <div class="insight-box"><div class="insight-title">📊 Market Insight</div><div class="insight-text">Clutch 2023 reports 35% of 33.2M US SMEs lack a website — roughly 11.6M businesses. The USA is not saturated; it's geographically uneven. Rural and Southern America is where the opportunity lives. Average ticket of $1,200 USD per project is your best earnings-per-project globally. Focus USA outreach on rural-specific Google Maps searches: "bbq restaurant Tupelo Mississippi", "auto repair Huntington West Virginia". Stripe payments land in seconds with no friction or currency conversion.</div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════ METADATA ═══════════════════ -->
+<section class="meta-section" id="metadata">
+  <div class="continent-banner" style="position:static;">
+    <span class="continent-name">📊 RESEARCH METADATA &amp; SOURCES</span>
+  </div>
+  <div class="meta-wrap" style="padding-top:24px;">
+    <div class="meta-row"><div class="meta-lbl">Primary Sources</div><div class="meta-val">Eurostat · World Bank · OECD · ISTAT (Italy) · INE (Spain) · WKO (Austria) · MONSHA'AT (Saudi Arabia) · ELSTAT (Greece) · DZS (Croatia) · AJPES (Slovenia) · Statistics Lithuania · CSB (Latvia) · SEDA (South Africa) · KNBS (Kenya) · Ghana Statistical Service · SMEDAN/NBS (Nigeria) · SIDO (Tanzania) · QFC/MOCI (Qatar) · Tamkeen (Bahrain) · Kuwait SME Fund · MSME Ministry India · DTI Philippines · Kemenkop Indonesia · GSO Vietnam · SBP Pakistan · SEBRAE (Brazil) · INEGI (Mexico) · DANE/MinTIC (Colombia) · CAME (Argentina) · SII/SERCOTEC (Chile) · ABS (Australia) · Stats NZ · Statistics Canada / BDC · SBA (USA)</div></div>
+    <div class="meta-row"><div class="meta-lbl">Secondary Sources</div><div class="meta-val">Statista · Wix/Fiverr/Upwork Benchmarks · NASSCOM · GSMA Mobile Economy · Dubai SME · Clutch.co / Visual Objects</div></div>
+    <div class="meta-row"><div class="meta-lbl">Data Period</div><div class="meta-val">2022–2024 — most recent available per country</div></div>
+    <div class="meta-row"><div class="meta-lbl">FX Rates</div><div class="meta-val">EUR/USD 1.08 · AED/USD 0.272 · SAR/USD 0.266 · AUD/USD 0.66 · NZD/USD 0.60 · CAD/USD 0.74 · NGN/USD 0.00091 · PHP/USD 0.0175 · IDR/USD 0.000062 · BRL/USD 0.195 · COP/USD 0.00024 (2024 averages)</div></div>
+    <div class="meta-row"><div class="meta-lbl">Total Countries</div><div class="meta-val">30 countries across 7 continents</div></div>
+    <div class="meta-row"><div class="meta-lbl">Total Offline SMEs</div><div class="meta-val">~100M+ businesses globally without a professional website</div></div>
+    <div class="meta-row"><div class="meta-lbl">Disclaimer</div><div class="meta-val">Price ranges are market benchmarks based on freelancer community data, agency pricing surveys, and published SME reports. Actual conversion rates will vary. SME digitisation statistics sourced from official national statistical agencies. GDP per capita figures are PPP-adjusted where available.</div></div>
+
+    <div class="section-label" style="padding:20px 0 8px 0;">GLOBAL SUMMARY</div>
+    <table class="global-summary-table">
+      <thead><tr><th>Continent</th><th>Countries</th><th>Est. Offline SMEs</th><th>Best Entry Market</th></tr></thead>
+      <tbody>
+        <tr><td>Africa</td><td>5</td><td>~40M</td><td>Nigeria (Lagos/Abuja)</td></tr>
+        <tr><td>Middle East</td><td>5</td><td>~200k</td><td>Qatar / UAE</td></tr>
+        <tr><td>Asia</td><td>5</td><td>~98M</td><td>India (Surat/Coimbatore)</td></tr>
+        <tr><td>Latin America</td><td>5</td><td>~18M</td><td>Colombia (Medellin)</td></tr>
+        <tr><td>Oceania</td><td>2</td><td>~1.25M</td><td>Australia (Regional QLD)</td></tr>
+        <tr><td>North America</td><td>2</td><td>~12M</td><td>Canada (Atlantic) / USA (Rural South)</td></tr>
+        <tr><td>Europe (EU)</td><td>8</td><td>~7M</td><td>Italy (Sicily) / Greece</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  Global SME Market Research &nbsp;·&nbsp; Emmanuel Ano Web Dev &nbsp;·&nbsp; Data: World Bank · Eurostat · National Statistics Offices 2022–2024
+</footer>
+
+<script>
+function toggleCountry(btn) {
+  const body = btn.nextElementSibling;
+  const isOpen = body.classList.contains('open');
+  body.classList.toggle('open', !isOpen);
+  btn.classList.toggle('open', !isOpen);
+  btn.firstChild.textContent = isOpen ? '▼ view data breakdown ' : '▲ hide data breakdown ';
+}
+</script>
+</body>
+</html>
